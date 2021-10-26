@@ -1,0 +1,12 @@
+{
+  "elements" : [
+    {
+      "name" : "customInput",
+      "public": true,
+      "type": "utam-custom/pageObjects/myInput",
+      "selector" : {
+        "css" : "custom-input"
+      }
+    }
+  ]
+}

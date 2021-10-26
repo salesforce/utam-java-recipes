@@ -1,0 +1,18 @@
+{
+  "pageObjectsRootDir": "/src/main/resources/spec",
+  "pageObjectsFilesMask": "(.*)\\.utam\\.json$",
+  "pageObjectsOutputDir": "/src/main/java",
+  "resourcesOutputDir": "/src/main/resources",
+  "unitTestsOutputDir": "/src/test/java",
+  "unitTestsRunner": "NONE",
+  "namespaces": [
+    {
+      "typeMatch": "utam-lightning",
+      "pathMatch": ".*/lightning"
+    },
+    {
+      "typeMatch": "utam-custom",
+      "pathMatch": ".*/custom"
+    }
+  ]
+}

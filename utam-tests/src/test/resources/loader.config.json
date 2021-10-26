@@ -1,0 +1,16 @@
+{
+  "modules": [
+    {
+      "name": "mobileSF",
+      "profiles": [
+        {
+          "name": "platform",
+          "values": [
+            "android",
+            "ios"
+          ]
+        }
+      ]
+    }
+  ]
+}
