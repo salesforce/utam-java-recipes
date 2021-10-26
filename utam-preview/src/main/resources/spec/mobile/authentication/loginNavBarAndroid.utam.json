@@ -1,0 +1,35 @@
+{
+  "implements": "utam-salesforceapp/pageObjects/authentication/loginNavBar",
+  "root": true,
+  "platform": "native",
+  "profile": [
+    {
+      "platform": "android"
+    }
+  ],
+  "selector": {
+    "uiautomator": "resourceId(\"android:id/action_bar_container\")"
+  },
+  "methods": [
+    {
+      "name": "chooseConnOption",
+      "compose": [
+        {
+          "element": "connBtn",
+          "apply": "click"
+        }
+      ]
+    }
+  ],
+  "elements": [
+    {
+      "name": "connBtn",
+      "type": [
+        "clickable"
+      ],
+      "selector": {
+        "accessid": "More options"
+      }
+    }
+  ]
+}

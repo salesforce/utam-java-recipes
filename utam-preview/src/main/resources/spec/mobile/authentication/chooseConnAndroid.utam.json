@@ -1,0 +1,59 @@
+{
+  "implements": "utam-salesforceapp/pageObjects/authentication/chooseConn",
+  "root": true,
+  "platform": "native",
+  "profile": [
+    {
+      "platform": "android"
+    }
+  ],
+  "selector": {
+    "uiautomator": "resourceId(\"android:id/content\")"
+  },
+  "methods": [
+    {
+      "name": "addNewConnection",
+      "compose": [
+        {
+          "element": "addConnBtn",
+          "apply": "click"
+        }
+      ]
+    },
+    {
+      "name": "switchConnection",
+      "compose": [
+        {
+          "element": "chooseEnv",
+          "apply": "click"
+        }
+      ]
+    }
+  ],
+  "elements": [
+    {
+      "name": "addConnBtn",
+      "type": [
+        "clickable"
+      ],
+      "selector": {
+        "uiautomator": "resourceId(\"com.salesforce.chatter:id/sf__show_custom_url_edit\")"
+      }
+    },
+    {
+      "name": "chooseEnv",
+      "type": [
+        "clickable"
+      ],
+      "selector": {
+        "uiautomator": "className(\"android.widget.RadioButton\").textContains(\"%s\")",
+        "args": [
+          {
+            "name": "envName",
+            "type": "string"
+          }
+        ]
+      }
+    }
+  ]
+}

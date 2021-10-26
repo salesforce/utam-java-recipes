@@ -1,0 +1,59 @@
+{
+  "pageObjectsRootDir": "/src/main/resources/spec",
+  "pageObjectsFilesMask": "(.*)\\.utam\\.json$",
+  "pageObjectsOutputDir": "/src/main/java",
+  "resourcesOutputDir": "/src/main/resources",
+  "unitTestsOutputDir": "/src/test/java",
+  "unitTestsRunner": "NONE",
+  "profiles": [
+    {
+      "name": "platform",
+      "values": [
+        "ios",
+        "android"
+      ]
+    }
+  ],
+  "namespaces": [
+    {
+      "typeMatch": "utam-lightning",
+      "pathMatch": ".*/lightning"
+    },
+    {
+      "typeMatch": "utam-force",
+      "pathMatch": ".*/force"
+    },
+    {
+      "typeMatch": "utam-tests",
+      "pathMatch": ".*/tests"
+    },
+    {
+      "typeMatch": "utam-runtimecdp",
+      "pathMatch": ".*/tmp/runtime_cdp"
+    },
+    {
+      "typeMatch": "utam-global",
+      "pathMatch": ".*/one"
+    },
+    {
+      "typeMatch": "utam-record-flexipage",
+      "pathMatch": ".*/record_flexipage"
+    },
+    {
+      "typeMatch": "utam-flexipage",
+      "pathMatch": ".*/flexipage"
+    },
+    {
+      "typeMatch": "utam-records",
+      "pathMatch": ".*/records"
+    },
+    {
+      "typeMatch": "utam-action",
+      "pathMatch": ".*/runtime_platform_actions"
+    },
+    {
+      "typeMatch": "utam-salesforceapp",
+      "pathMatch": ".*/mobile"
+    }
+  ]
+}

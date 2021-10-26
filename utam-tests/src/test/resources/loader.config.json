@@ -1,0 +1,11 @@
+{
+  "profiles": [
+    {
+      "name": "platform",
+      "values": [
+        "android",
+        "ios"
+      ]
+    }
+  ]
+}

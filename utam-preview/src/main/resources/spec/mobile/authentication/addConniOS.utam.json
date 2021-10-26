@@ -1,0 +1,67 @@
+{
+   "implements":"utam-salesforceapp/pageObjects/authentication/addConn",
+   "root":true,
+   "platform":"native",
+   "profile":[
+      {
+         "platform":"ios"
+      }
+   ],
+   "selector":{
+      "classchain":"**/XCUIElementTypeOther[$type == 'XCUIElementTypeNavigationBar' AND name ='Add Connection'$][1]"
+   },
+   "methods":[
+      {
+         "name":"addConnection",
+         "compose":[
+            {
+               "element":"name",
+               "apply":"setText",
+               "args":[
+                  {
+                     "name":"name",
+                     "type":"string"
+                  }
+               ]
+            },
+            {
+               "element":"url",
+               "apply":"setText",
+               "args":[
+                  {
+                     "name":"url",
+                     "type":"string"
+                  }
+               ]
+            },
+            {
+               "element":"doneBtn",
+               "apply":"click"
+            }
+         ]
+      }
+   ],
+   "elements":[
+      {
+         "name":"url",
+         "type":["editable"],
+         "selector":{
+            "classchain":"**/XCUIElementTypeTextField[`value BEGINSWITH 'Host'`]"
+         }
+      },
+      {
+         "name":"name",
+         "type":["editable"],
+         "selector":{
+            "classchain":"**/XCUIElementTypeTextField[`value BEGINSWITH 'Label'`]"
+         }
+      },
+      {
+         "name":"doneBtn",
+         "type": ["clickable"],
+         "selector":{
+            "accessid":"Done"
+         }
+      }
+   ]
+}

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.salesforce.utam</groupId>
+  <artifactId>utam-java-recipes</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <modules>
+    <module>utam-preview</module>
+    <module>utam-tests</module>
+  </modules>
+
+  <properties>
+    <utam.framework.version>1.0-alpha-6</utam.framework.version>
+    <maven.compiler.source>11</maven.compiler.source>
+    <maven.compiler.target>11</maven.compiler.target>
+  </properties>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>com.salesforce.utam</groupId>
+        <artifactId>utam-core</artifactId>
+        <version>${utam.framework.version}</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+</project>

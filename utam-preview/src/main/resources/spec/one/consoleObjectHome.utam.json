@@ -1,0 +1,32 @@
+{
+  "root": true,
+  "selector": {
+    "css": ".oneConsoleObjectHome"
+  },
+  "beforeLoad": [
+    {
+      "apply": "waitFor",
+      "args": [
+        {
+          "type": "function",
+          "predicate": [
+            {
+              "element": "root",
+              "apply": "isPresent"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "elements": [
+    {
+      "name": "listView",
+      "type": "utam-force/pageObjects/listViewManager",
+      "selector": {
+        "css": ".forceListViewManager"
+      },
+      "public": true
+    }
+  ]
+}

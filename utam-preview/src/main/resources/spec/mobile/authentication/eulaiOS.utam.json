@@ -1,0 +1,35 @@
+{
+  "implements": "utam-salesforceapp/pageObjects/authentication/eula",
+  "platform": "native",
+  "profile": [
+    {
+      "platform": "ios"
+    }
+  ],
+  "root": true,
+  "selector": {
+    "accessid": "Toolbar"
+  },
+  "methods": [
+    {
+      "name": "accept",
+      "compose": [
+        {
+          "element": "iaccept",
+          "apply": "click"
+        }
+      ]
+    }
+  ],
+  "elements": [
+    {
+      "type": [
+        "clickable"
+      ],
+      "name": "iaccept",
+      "selector": {
+        "accessid": "EULA.agree"
+      }
+    }
+  ]
+}

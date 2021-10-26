@@ -1,0 +1,59 @@
+{
+  "implements": "utam-salesforceapp/pageObjects/authentication/chooseConn",
+  "root": true,
+  "platform": "native",
+  "profile": [
+    {
+      "platform": "ios"
+    }
+  ],
+  "selector": {
+    "classchain": "**/XCUIElementTypeOther[$type == 'XCUIElementTypeNavigationBar' AND name ='Choose Connection'$][1]"
+  },
+  "methods": [
+    {
+      "name": "switchConnection",
+      "compose": [
+        {
+          "element": "envName",
+          "apply": "click"
+        }
+      ]
+    },
+    {
+      "name": "addNewConnection",
+      "compose": [
+        {
+          "element": "addBtn",
+          "apply": "click"
+        }
+      ]
+    }
+  ],
+  "elements": [
+    {
+      "name": "envName",
+      "type": [
+        "clickable"
+      ],
+      "selector": {
+        "classchain": "**/XCUIElementTypeStaticText[`label == '%s'`]",
+        "args": [
+          {
+            "name": "item",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    {
+      "name": "addBtn",
+      "type": [
+        "clickable"
+      ],
+      "selector": {
+        "accessid": "Add"
+      }
+    }
+  ]
+}

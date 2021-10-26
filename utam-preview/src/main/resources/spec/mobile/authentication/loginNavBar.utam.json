@@ -1,0 +1,9 @@
+{
+  "root": true,
+  "interface": true,
+  "methods": [
+    {
+      "name": "chooseConnOption"
+    }
+  ]
+}

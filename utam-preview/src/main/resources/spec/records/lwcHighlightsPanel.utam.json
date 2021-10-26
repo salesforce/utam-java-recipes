@@ -1,0 +1,29 @@
+{
+  "shadow": {
+    "elements": [
+      {
+        "type": "utam-records/pageObjects/lwcRecordLayout",
+        "name": "recordLayout",
+        "selector": {
+          "css": "records-lwc-record-layout"
+        },
+        "public": true
+      }
+    ]
+  },
+  "methods": [
+    {
+      "name": "getHighlights2",
+      "compose": [
+        {
+          "element": "recordLayout"
+        },
+        {
+          "chain": true,
+          "element": "highlights2",
+          "returnType": "utam-records/pageObjects/highlights2"
+        }
+      ]
+    }
+  ]
+}
