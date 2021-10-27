@@ -7,18 +7,8 @@
  */
 package utam.base;
 
-import static utam.base.UtamMobileTestBase.getUserHomeRelativePath;
-
-import java.time.Duration;
-import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterTest;
-import utam.core.driver.DriverType;
-import utam.core.framework.base.RootPageObject;
-import utam.core.framework.consumer.UtamLoader;
-import utam.core.framework.consumer.UtamLoaderConfig;
-import utam.core.framework.consumer.UtamLoaderConfigImpl;
-import utam.core.framework.consumer.UtamLoaderImpl;
-import utam.core.selenium.factory.WebDriverFactory;
+import java.util.ResourceBundle;
+import utam.tests.pageobjects.Login;
 
 /**
  * Base Class for Web tests
@@ -28,7 +18,15 @@ import utam.core.selenium.factory.WebDriverFactory;
  */
 public abstract class SalesforceWebTestBase extends UtamWebTestBase {
 
-  protected final void login(String login, String password, String homePageUrl) {
-
+  protected final void login(String envName, String homePageUrl) {
+    ResourceBundle resourceBundle = ResourceBundle.getBundle("env");
+    String urlKey = envName + ".url";
+    String usernameKey = envName + ".username";
+    String passwordKey = envName + ".password";
+    getDriver().get(resourceBundle.getString(urlKey));
+    Login loginPage = from(Login.class);
+    loginPage.login(resourceBundle.getString(usernameKey), resourceBundle.getString(passwordKey), homePageUrl);
   }
+
+
 }

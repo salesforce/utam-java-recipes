@@ -30,3 +30,4 @@ chromedriver*
 .DS_Store
 log.out
 **/pageobjects/**/*.java
+**/*env.properties

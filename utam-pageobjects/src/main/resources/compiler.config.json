@@ -13,6 +13,14 @@
     {
       "typeMatch": "utam-custom",
       "pathMatch": ".*/custom"
+    },
+    {
+      "typeMatch": "utam-tests",
+      "pathMatch": ".*/helpers"
+    },
+    {
+      "typeMatch": "utam-runtimecdp",
+      "pathMatch": ".*/runtime_cdp"
     }
   ]
 }

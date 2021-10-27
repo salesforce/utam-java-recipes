@@ -16,8 +16,7 @@ public class RecordTestExample extends SalesforceWebTestBase {
   @BeforeTest
   public void setUp() {
     setupChrome();
-    getDriver().get("https://www.salesforce.com");
-    login("myLogin", "myPassword", "home");
+    login("na45", "home");
   }
 
   @Test

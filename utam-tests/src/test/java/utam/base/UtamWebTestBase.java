@@ -12,8 +12,7 @@ import static utam.base.UtamMobileTestBase.getUserHomeRelativePath;
 import java.time.Duration;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
+import utam.core.driver.Document;
 import utam.core.driver.DriverType;
 import utam.core.framework.base.RootPageObject;
 import utam.core.framework.consumer.UtamLoader;
@@ -33,14 +32,29 @@ public abstract class UtamWebTestBase {
   private WebDriver driver;
   private UtamLoader loader;
 
+  private UtamLoaderConfig getLoaderConfig() {
+    UtamLoaderConfig config = new UtamLoaderConfigImpl("loader.config.json");
+    config.setWaitForTimeout(Duration.ofSeconds(90));
+    config.setFindTimeout(Duration.ofSeconds(30));
+    return config;
+  }
+
+  protected final Document getDomDocument() {
+    return loader.getDocument();
+  }
+
   protected final void setupChrome() {
     System.setProperty("webdriver.chrome.driver",  getUserHomeRelativePath("chromedriver"));
     driver = WebDriverFactory.getWebDriver(DriverType.chrome);
-    UtamLoaderConfig config = new UtamLoaderConfigImpl("loader.config.json");
-    config.setWaitForTimeout(Duration.ofSeconds(90));
-    config.setFindTimeout(Duration.ZERO);
+    UtamLoaderConfig config = getLoaderConfig();
     loader = new UtamLoaderImpl(config, WebDriverFactory.getAdapter(driver));
-    driver.get("https://na45.stmfa.stm.salesforce.com");
+  }
+
+  protected final void setupFirefox() {
+    System.setProperty("webdriver.gecko.driver", getUserHomeRelativePath("geckodriver"));
+    driver = WebDriverFactory.getWebDriver(DriverType.firefox);
+    UtamLoaderConfig config = getLoaderConfig();
+    loader = new UtamLoaderImpl(config, WebDriverFactory.getAdapter(driver));
   }
 
   // helper method to load any Root Page Object
@@ -49,7 +63,11 @@ public abstract class UtamWebTestBase {
   }
 
   @AfterTest
-  public final void quitDriver() {
+  public final void tearDown() {
+    quitDriver();
+  }
+
+  protected final void quitDriver() {
     if (driver != null) {
       driver.quit();
     }
@@ -57,5 +75,17 @@ public abstract class UtamWebTestBase {
 
   protected final WebDriver getDriver() {
     return driver;
+  }
+
+  protected final void debug(int seconds) {
+    try {
+      Thread.sleep(seconds * 1000);
+    } catch (InterruptedException ie) {
+      throw new AssertionError(ie);
+    }
+  }
+
+  protected final void log(String str) {
+    System.out.println(str);
   }
 }

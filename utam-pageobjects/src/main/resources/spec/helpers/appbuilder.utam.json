@@ -1,0 +1,23 @@
+{
+  "root" : true,
+  "selector" : {
+    "css" : "body"
+  },
+  "elements" : [
+    {
+      "type" : ["draggable", "clickable", "actionable"],
+      "public" : true,
+      "name" : "accordion",
+      "selector" : {
+        "css" : "[data-palette-item-name='flexipage:accordion'] .ui-draggable a"
+      }
+    },
+    {
+      "name" : "target",
+      "public" : true,
+      "selector" : {
+        "css" : ".flexipageBaseRecordHomeTemplateDesktop"
+      }
+    }
+  ]
+}

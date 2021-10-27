@@ -1,0 +1,55 @@
+{
+  "root": true,
+  "selector": {
+    "css": ".viewport"
+  },
+  "elements": [
+    {
+      "public": true,
+      "type": [
+        "draggable"
+      ],
+      "name": "foundAttribute",
+      "selector": {
+        "css": "[data-tid='name']"
+      }
+    },
+    {
+      "name": "segmentationCanvas",
+      "public": true,
+      "selector": {
+        "css": "[data-tid=\"segment-canvas\"]"
+      }
+    }
+  ],
+  "methods" : [
+    {
+      "name" : "waitForAttributeWithText",
+      "compose" : [
+        {
+          "apply" : "waitFor",
+          "args" : [
+            {
+              "type" : "function",
+              "predicate" : [
+                {
+                  "element" : "foundAttribute",
+                  "apply" : "getText",
+                  "matcher" : {
+                    "type" : "stringContains",
+                    "args" : [
+                      {
+                        "name" : "foundText",
+                        "type" : "string"
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

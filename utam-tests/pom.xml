@@ -38,6 +38,12 @@
       <artifactId>java-client</artifactId>
       <version>${appium.version}</version>
     </dependency>
+    <dependency>
+      <groupId>com.salesforce.utam</groupId>
+      <artifactId>utam-pageobjects</artifactId>
+      <version>1.0-SNAPSHOT</version>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
 
 </project>

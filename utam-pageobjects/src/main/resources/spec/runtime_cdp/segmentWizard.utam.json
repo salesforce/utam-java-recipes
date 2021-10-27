@@ -1,0 +1,164 @@
+{
+  "root" : true,
+  "selector" : {
+    "css" : "runtime_cdp-segment-wizard"
+  },
+  "shadow" : {
+    "elements" : [
+      {
+        "name" : "builder",
+        "selector" : {
+          "css" : "runtime_cdp-segment-builder"
+        },
+        "shadow" : {
+          "elements" : [
+            {
+              "name" : "canvas",
+              "public" : true,
+              "selector" : {
+                "css" : "runtime_cdp-canvas"
+              },
+              "shadow" : {
+                "elements" : [
+                  {
+                    "name" : "target",
+                    "selector" : {
+                      "css" : "runtime_cdp-drop-target"
+                    },
+                    "elements" : [
+                      {
+                        "name" : "emptyState",
+                        "selector" : {
+                          "css" : "runtime_cdp-canvas-empty-state"
+                        },
+                        "shadow" : {
+                          "elements" : [
+                            {
+                              "name" : "svgSelector",
+                              "public" : true,
+                              "selector" : {
+                                "css" : "runtime_cdp-svg-selector"
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "name" : "attrLibrary",
+              "selector" : {
+                "css" : "runtime_cdp-attribute-library"
+              },
+              "shadow" : {
+                "elements" : [
+                  {
+                    "name" : "input",
+                    "type" : "utam-lightning/pageobjects/input",
+                    "public" : true,
+                    "selector" : {
+                      "css" : "lightning-input"
+                    }
+                  },
+                  {
+                    "name" : "attrBrowser",
+                    "selector" : {
+                      "css" : "runtime_cdp-attribute-browser"
+                    },
+                    "shadow" : {
+                      "elements" : [
+                        {
+                          "name" : "accordion",
+                          "selector" : {
+                            "css" : "lightning-accordion"
+                          },
+                          "elements" : [
+                            {
+                              "name" : "accordionSection",
+                              "selector" : {
+                                "css" : "lightning-accordion-section"
+                              },
+                              "elements" : [
+                                {
+                                  "name" : "attributeTree",
+                                  "selector" : {
+                                    "css" : "runtime_cdp-attribute-tree-drillin"
+                                  },
+                                  "shadow" : {
+                                    "elements": [
+                                      {
+                                        "name": "attrList",
+                                        "selector": {
+                                          "css": "runtime_cdp-attribute-list"
+                                        },
+                                        "shadow" : {
+                                          "elements": [
+                                            {
+                                              "name": "dragItem",
+                                              "selector": {
+                                                "css": "runtime_cdp-drag-item"
+                                              },
+                                              "shadow" : {
+                                                "elements" : [
+                                                  {
+                                                    "name" : "draggableDiv",
+                                                    "public" : true,
+                                                    "type" : ["draggable"],
+                                                    "selector" : {
+                                                      "css" : "[data-tid='drag-item']"
+                                                    }
+                                                  }
+                                                ]
+                                              }
+                                            },
+                                            {
+                                              "name" : "helper",
+                                              "selector" : {
+                                                "css" : "runtime_cdp-cdp-accessibility-helper"
+                                              },
+                                              "elements" : [
+                                                {
+                                                  "name" : "helperRow",
+                                                  "selector" : {
+                                                    "css" : "runtime_cdp-attribute-row"
+                                                  },
+                                                  "shadow" : {
+                                                    "elements" : [
+                                                      {
+                                                        "public" : true,
+                                                        "type" : ["draggable"],
+                                                        "name" : "somethingDraggable",
+                                                        "selector" : {
+                                                          "css" : "[data-tid='name']"
+                                                        }
+                                                      }
+                                                    ]
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      }
+                                    ]
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
