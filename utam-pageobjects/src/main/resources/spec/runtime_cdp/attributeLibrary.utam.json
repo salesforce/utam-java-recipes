@@ -1,0 +1,34 @@
+{
+  "methods" : [
+    {
+      "name" : "waitForInput",
+      "compose" : [
+        {
+          "apply" : "waitFor",
+          "args" : [
+            {
+              "type" : "function",
+              "predicate" : [
+                {
+                  "element" : "searchInput"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "shadow" : {
+    "elements" : [
+      {
+        "name" : "searchInput",
+        "type" : "utam-lightning/pageobjects/input",
+        "public" : true,
+        "selector" : {
+          "css" : "lightning-input[data-tid=\"input-attribute-search\"]"
+        }
+      }
+    ]
+  }
+}

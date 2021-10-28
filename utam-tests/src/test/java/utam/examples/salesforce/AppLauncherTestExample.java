@@ -13,7 +13,7 @@ import org.testng.annotations.Test;
 import utam.base.SalesforceWebTestBase;
 import utam.examples.TestEnvironmentUtils;
 
-public class RecordTestExample extends SalesforceWebTestBase {
+public class AppLauncherTestExample extends SalesforceWebTestBase {
 
   @BeforeTest
   public void setup() {
@@ -23,13 +23,14 @@ public class RecordTestExample extends SalesforceWebTestBase {
     getDriver().get(testEnvironment.getLoginUrl());
   }
 
+  @Test
+  public void testSwitchToSalesApp() {
+    // todo
+    debug(10);
+  }
+
   @AfterTest
   public final void tearDown() {
     quitDriver();
-  }
-
-  @Test
-  public void testRecordCreation() {
-    debug(10);
   }
 }

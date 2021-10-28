@@ -7,9 +7,9 @@
     {
       "public": true,
       "type": [
-        "draggable"
+        "draggable", "actionable"
       ],
-      "name": "foundAttribute",
+      "name": "draggableAttribute",
       "selector": {
         "css": "[data-tid='name']"
       }
@@ -17,6 +17,7 @@
     {
       "name": "segmentationCanvas",
       "public": true,
+      "type" : [ "clickable"],
       "selector": {
         "css": "[data-tid=\"segment-canvas\"]"
       }
@@ -33,7 +34,7 @@
               "type" : "function",
               "predicate" : [
                 {
-                  "element" : "foundAttribute",
+                  "element" : "draggableAttribute",
                   "apply" : "getText",
                   "matcher" : {
                     "type" : "stringContains",

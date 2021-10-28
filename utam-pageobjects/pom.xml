@@ -16,11 +16,6 @@
       <groupId>com.salesforce.utam</groupId>
       <artifactId>utam-core</artifactId>
     </dependency>
-    <dependency>
-      <groupId>org.salesforce</groupId>
-      <artifactId>utam-salesforce-pageobjects</artifactId>
-      <version>236.0.0</version>
-    </dependency>
   </dependencies>
 
   <build>

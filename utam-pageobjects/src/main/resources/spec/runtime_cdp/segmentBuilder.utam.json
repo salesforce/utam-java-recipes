@@ -1,0 +1,14 @@
+{
+  "shadow" : {
+    "elements" : [
+      {
+        "name" : "attributeLibrary",
+        "selector" : {
+          "css" : "runtime_cdp-attribute-library"
+        },
+        "public" : true,
+        "type" : "utam-runtimecdp/pageObjects/attributeLibrary"
+      }
+    ]
+  }
+}

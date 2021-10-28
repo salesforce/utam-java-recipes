@@ -1,0 +1,91 @@
+// whole po is updated
+// https://github.com/salesforce/lightning-components/tree/master/ui-lightning-components/src/main/modules/interop/accordionSection
+{
+  "methods": [
+    {
+      "name": "isActive",
+      "compose": [
+        {
+          "element": "section",
+          "apply": "getAttribute",
+          "args": [
+            {
+              "value" : "class"
+            }
+          ],
+          "matcher" : {
+            "type" : "stringContains",
+            "args": [
+              {
+                "value" : "slds-is-open"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "getLabel",
+      "compose": [
+        {
+          "element": "sectionSummaryButtonLabel",
+          "apply": "getText"
+        }
+      ]
+    },
+    {
+      "name": "toggle",
+      "compose": [
+        {
+          "element": "sectionSummaryButton",
+          "apply": "click"
+        }
+      ]
+    }
+  ],
+  "elements" : [
+    {
+      "type" : "container",
+      "name" : "sectionContent",
+      "public" : true,
+      "selector" : {
+        "css" : ":first-child"
+      }
+    }
+  ],
+  "shadow": {
+    "elements": [
+      {
+        "name": "section",
+        "selector": {
+          "css": "section.slds-accordion__section"
+        },
+        "elements": [
+          {
+            "name" : "sectionSummary",
+            "selector" : {
+              "css" : "div.slds-accordion__summary"
+            },
+            "elements" : [
+              {
+                "name": "sectionSummaryButton",
+                "type": ["clickable"],
+                "selector": {
+                  "css": "button"
+                },
+                "elements": [
+                  {
+                    "name": "sectionSummaryButtonLabel",
+                    "selector": {
+                      "css": ".slds-accordion__summary-content"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -7,7 +7,7 @@
  */
 package utam.base;
 
-import java.util.ResourceBundle;
+import utam.examples.TestEnvironmentUtils;
 import utam.tests.pageobjects.Login;
 
 /**
@@ -18,15 +18,29 @@ import utam.tests.pageobjects.Login;
  */
 public abstract class SalesforceWebTestBase extends UtamWebTestBase {
 
-  protected final void login(String envName, String homePageUrl) {
-    ResourceBundle resourceBundle = ResourceBundle.getBundle("env");
-    String urlKey = envName + ".url";
-    String usernameKey = envName + ".username";
-    String passwordKey = envName + ".password";
-    getDriver().get(resourceBundle.getString(urlKey));
-    Login loginPage = from(Login.class);
-    loginPage.login(resourceBundle.getString(usernameKey), resourceBundle.getString(passwordKey), homePageUrl);
+  protected final TestEnvironmentUtils getTestEnvironment(String envNamePrefix) {
+    return new TestEnvironmentUtils(envNamePrefix);
   }
 
+  /**
+   * login to the environment based on url and credentials provided in env.properties file which
+   * should be located in test resources root
+   *
+   * @param envNamePrefix prefix
+   * @param landingPagePartialUrl after login, this is partial url that we land in
+   * @return base url defined in properties file
+   */
+  protected final TestEnvironmentUtils login(String envNamePrefix, String landingPagePartialUrl) {
+    TestEnvironmentUtils testEnvironment = getTestEnvironment(envNamePrefix);
+    String baseUrl = testEnvironment.getBaseUrl();
+    getDriver().get(baseUrl);
+    Login loginPage = from(Login.class);
+    loginPage.login(
+        testEnvironment.getUserName(), testEnvironment.getPassword(), landingPagePartialUrl);
+    return testEnvironment;
+  }
 
+  protected final TestEnvironmentUtils loginToHomePage(String envNamePrefix) {
+    return login(envNamePrefix, "home");
+  }
 }

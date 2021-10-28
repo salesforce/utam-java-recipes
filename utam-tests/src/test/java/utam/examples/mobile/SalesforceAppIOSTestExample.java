@@ -5,7 +5,7 @@
  * For full license text, see the LICENSE file in the repo root
  * or https://opensource.org/licenses/MIT
  */
-package utam.examples.salesforce;
+package utam.examples.mobile;
 
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
