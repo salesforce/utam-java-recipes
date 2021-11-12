@@ -52,14 +52,18 @@ public abstract class UtamMobileTestBase {
     desiredCapabilities.setDesiredCapability(MobileCapabilityType.FORCE_MJSONWP, true);
   }
 
+  private void setLoaderConfig() {
+    config = new UtamLoaderConfigImpl("loader.config.json");
+    config.setProfile(MobilePlatformType.fromDriver(driver));
+    loader = new UtamLoaderImpl(config, driver);
+  }
+
   protected final void setupAndroid() {
     setupMobile();
     System.setProperty("android.app", getUserHomeRelativePath("SApp.apk"));
     System.setProperty("app.activity", "com.salesforce.chatter.Chatter");
     driver = WebDriverFactory.getWebDriver(DriverType.android, appiumService, desiredCapabilities);
-    config = new UtamLoaderConfigImpl("loader.config.json");
-    config.setProfile(MobilePlatformType.fromDriver(driver));
-    loader = new UtamLoaderImpl(config, WebDriverFactory.getAdapter(driver));
+    setLoaderConfig();
   }
 
   protected final void setupIOS() {
@@ -68,9 +72,7 @@ public abstract class UtamMobileTestBase {
     System.setProperty("ios.app", getUserHomeRelativePath("SApp.app"));
     desiredCapabilities.setDesiredCapability(MobileCapabilityType.PLATFORM_VERSION, "13.4");
     driver = WebDriverFactory.getWebDriver(DriverType.ios, appiumService, desiredCapabilities);
-    config = new UtamLoaderConfigImpl("loader.config.json");
-    config.setProfile(MobilePlatformType.fromDriver(driver));
-    loader = new UtamLoaderImpl(config, WebDriverFactory.getAdapter(driver));
+    setLoaderConfig();
   }
 
   /** Quit web driver if it's not null. Method is used in test or suite teardown */

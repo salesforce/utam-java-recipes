@@ -37,8 +37,6 @@ public class RecordCreationTests extends SalesforceWebTestBase {
   @BeforeTest
   public void setup() {
     setupChrome();
-    // read test environment configuration from properties
-    TestEnvironment testEnvironment = getTestEnvironment("na45");
     loginToHomePage(testEnvironment);
   }
 

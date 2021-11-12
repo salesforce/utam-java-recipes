@@ -3,22 +3,6 @@
     "css": "div#content"
   },
   "root": true,
-  "beforeLoad": [
-    {
-      "apply": "waitFor",
-      "args": [
-        {
-          "type": "function",
-          "predicate": [
-            {
-              "element": "root",
-              "apply": "isPresent"
-            }
-          ]
-        }
-      ]
-    }
-  ],
   "methods": [
     {
       "name": "login",

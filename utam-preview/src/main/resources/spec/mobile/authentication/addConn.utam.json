@@ -1,19 +1,19 @@
 {
-   "root":true,
-   "interface":true,
-   "methods":[
-      {
-         "name":"addConnection",
-         "args":[
-            {
-               "name":"name",
-               "type":"string"
-            },
-            {
-               "name":"url",
-               "type":"string"
-            }
-         ]
-      }
-   ]
+  "root": true,
+  "interface": true,
+  "methods": [
+    {
+      "name": "addConnection",
+      "args": [
+        {
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "name": "url",
+          "type": "string"
+        }
+      ]
+    }
+  ]
 }

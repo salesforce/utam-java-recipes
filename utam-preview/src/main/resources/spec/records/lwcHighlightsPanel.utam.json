@@ -13,15 +13,30 @@
   },
   "methods": [
     {
-      "name": "getHighlights2",
+      "name": "getActions",
       "compose": [
         {
-          "element": "recordLayout"
+          "apply" : "waitFor",
+          "args" : [
+            {
+              "type" : "function",
+              "predicate" : [
+                {
+                  "element" : "recordLayout"
+                }
+              ]
+            }
+          ]
         },
         {
           "chain": true,
           "element": "highlights2",
           "returnType": "utam-records/pageObjects/highlights2"
+        },
+        {
+          "chain": true,
+          "element": "actionsRibbon",
+          "returnType": "utam-action/pageObjects/actionsRibbon"
         }
       ]
     }

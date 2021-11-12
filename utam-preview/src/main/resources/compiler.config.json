@@ -28,10 +28,6 @@
       "pathMatch": ".*/tests"
     },
     {
-      "typeMatch": "utam-runtimecdp",
-      "pathMatch": ".*/tmp/runtime_cdp"
-    },
-    {
       "typeMatch": "utam-global",
       "pathMatch": ".*/one"
     },

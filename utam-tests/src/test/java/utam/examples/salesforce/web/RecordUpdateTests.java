@@ -10,8 +10,13 @@ package utam.examples.salesforce.web;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+import utam.global.pageobjects.RecordActionWrapper;
 import utam.global.pageobjects.RecordHomeFlexipage2;
+import utam.records.pageobjects.BaseRecordForm;
 import utam.records.pageobjects.LwcHighlightsPanel;
+import utam.records.pageobjects.LwcRecordLayout;
+import utam.records.pageobjects.RecordLayoutBaseInput;
+import utam.records.pageobjects.RecordLayoutItem;
 import utam.utils.salesforce.RecordType;
 import utam.utils.salesforce.TestEnvironment;
 
@@ -51,7 +56,20 @@ public class RecordUpdateTests extends SalesforceWebTestBase {
     LwcHighlightsPanel highlightsPanel = recordHome.getAccountHighlights();
 
     log("Wait for button 'Edit' and click on it");
-    highlightsPanel.getHighlights2().getActionsRibbon().waitForRenderedAction("Edit").clickButton();
+    highlightsPanel.getActions().waitForRenderedAction("Edit").clickButton();
+
+    log("Load Record Form Modal");
+    RecordActionWrapper recordFormModal = from(RecordActionWrapper.class);
+    BaseRecordForm recordForm = recordFormModal.getRecordForm();
+    LwcRecordLayout recordLayout = recordForm.getRecordLayout();
+
+    RecordLayoutItem item = recordLayout.getItem(1, 2, 1);
+    final String accountName = "Utam";
+    item.getInputField(RecordLayoutBaseInput.class).getInput().setText(accountName);
+
+    log("Save new record");
+    recordForm.clickFooterButton("Save");
+    recordFormModal.waitForAbsence();
 
     debug(5);
   }
