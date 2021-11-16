@@ -76,7 +76,7 @@ public class TestEnvironment {
   }
 
   private String getSfdxLoginUrlKey() {
-    return envPrefix + ".sfdxLoginUrl";
+    return envPrefix + ".sfdx.url";
   }
 
   private String getUsernameKey() {

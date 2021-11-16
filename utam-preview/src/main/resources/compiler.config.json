@@ -50,6 +50,14 @@
     {
       "typeMatch": "utam-salesforceapp",
       "pathMatch": ".*/mobile"
+    },
+    {
+      "typeMatch": "utam-sfdx",
+      "pathMatch": ".*/force-app"
+    },
+    {
+      "typeMatch": "utam-navex",
+      "pathMatch": ".*/navex"
     }
   ]
 }

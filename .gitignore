@@ -32,3 +32,6 @@ log.out
 **/pageobjects/**/*.java
 **/*env.properties
 **/*_config.properties
+
+# scratch org
+.sfdx

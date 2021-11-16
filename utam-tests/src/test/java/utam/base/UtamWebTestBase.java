@@ -7,8 +7,6 @@
  */
 package utam.base;
 
-import static utam.base.UtamMobileTestBase.getUserHomeRelativePath;
-
 import java.time.Duration;
 import org.openqa.selenium.WebDriver;
 import org.testng.Reporter;
@@ -32,6 +30,10 @@ public abstract class UtamWebTestBase {
 
   private WebDriver driver;
   private UtamLoader loader;
+
+  static String getUserHomeRelativePath(String fileName) {
+    return System.getProperty("user.home") + System.getProperty("file.separator") + fileName;
+  }
 
   /**
    * get instance of the Document object
