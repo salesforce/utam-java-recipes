@@ -82,8 +82,6 @@ public class RecordCreationTests extends SalesforceWebTestBase {
 
     log("Load Accounts Record Home page");
     from(RecordHomeFlexipage2.class);
-
-    debug(5);
   }
 
   @AfterTest

@@ -70,8 +70,6 @@ public class RecordUpdateTests extends SalesforceWebTestBase {
     log("Save new record");
     recordForm.clickFooterButton("Save");
     recordFormModal.waitForAbsence();
-
-    debug(5);
   }
 
   @AfterTest

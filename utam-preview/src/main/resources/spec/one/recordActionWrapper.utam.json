@@ -132,6 +132,11 @@
           "element" : "baseRecordForm",
           "chain" : true,
           "returnType" : "utam-records/pageObjects/baseRecordForm"
+        },
+        {
+          "apply" : "waitForLoad",
+          "chain" : true,
+          "returnType" : "utam-records/pageObjects/baseRecordForm"
         }
       ]
     }
