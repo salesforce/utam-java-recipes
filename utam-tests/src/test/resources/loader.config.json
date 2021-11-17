@@ -3,8 +3,8 @@
     {
       "name": "platform",
       "values": [
-        "android",
-        "ios"
+        "android_phone",
+        "ios_phone"
       ]
     }
   ],

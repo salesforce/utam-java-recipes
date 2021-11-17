@@ -128,8 +128,6 @@ System.setProperty("app.activity", "com.salesforce.chatter.Chatter");
 ```
 
 - Download the [debug build](https://developer.salesforce.com/tools/mobile-debugging) for SalesforceApp iOS and Android.
-- Also if use IDE to execute test, please set the environment varilables ANDROID_HOME or ADROID_SDK_ROOT and PATH that includes /usr/local/bin for carthage.
+- Also if use IDE to execute test, please set the environment variables JAVA_HOME, ANDROID_HOME or ADROID_SDK_ROOT and PATH that includes /usr/local/bin for carthage.
 - To execute test, open the project from IDE (Eclipse or Intellij), then choose testSetDataConnection to Run As TestNG Test. For test on Android, make sure to start an emulator before run. Otherwise test will fail for throwing a SessionNotCreatedException. The error will be similar as "org.openqa.selenium.SessionNotCreatedException: Unable to create a new remote session. Please check the server log for more details. Original error: An unknown server-side error occurred while processing the command. Original error: Could not find a connected Android device in 20054ms.".
-
-
-
+- Install appropriate version of chromedriver based on the instruction on this [site](https://github.com/appium/appium/blob/master/docs/en/writing-running-appium/web/chromedriver.md). Otherwise will hit error like this: "No Chromedriver found that can automate Chrome '74.0.3729'."

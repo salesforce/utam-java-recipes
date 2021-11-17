@@ -3,7 +3,7 @@
   "platform": "native",
   "profile": [
     {
-      "platform": "ios"
+      "platform": "ios_phone"
     }
   ],
   "root": true,
