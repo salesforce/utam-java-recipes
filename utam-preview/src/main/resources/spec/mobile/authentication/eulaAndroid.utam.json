@@ -3,7 +3,7 @@
   "platform": "native",
   "profile": [
     {
-      "platform": "android_phone"
+      "platform": ["android_phone", "android_tablet"]
     }
   ],
   "root": true,

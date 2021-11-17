@@ -10,7 +10,9 @@
       "name": "platform",
       "values": [
         "ios_phone",
-        "android_phone"
+        "ios_tablet",
+        "android_phone",
+        "android_tablet"
       ]
     }
   ],
