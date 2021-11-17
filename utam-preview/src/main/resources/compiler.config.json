@@ -56,10 +56,6 @@
     {
       "typeMatch": "utam-sfdx",
       "pathMatch": ".*/force-app"
-    },
-    {
-      "typeMatch": "utam-navex",
-      "pathMatch": ".*/navex"
     }
   ]
 }

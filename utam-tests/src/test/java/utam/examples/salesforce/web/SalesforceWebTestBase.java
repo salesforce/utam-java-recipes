@@ -38,13 +38,4 @@ abstract class SalesforceWebTestBase extends UtamWebTestBase {
             userName, landingPagePartialUrl));
     loginPage.loginToHomePage(userName, testEnvironment.getPassword(), landingPagePartialUrl);
   }
-
-  /**
-   * same as login method, but with hardcoded expected partial URL "home"
-   *
-   * @param testEnvironment environment information
-   */
-  public final void loginToHomePage(TestEnvironment testEnvironment) {
-    login(testEnvironment, "home");
-  }
 }

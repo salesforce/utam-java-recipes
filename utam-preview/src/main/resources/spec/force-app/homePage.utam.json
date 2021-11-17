@@ -1,11 +1,11 @@
 {
   "root": true,
   "selector": {
-    "css": ".navexDesktopLayoutContainer"
+    "css": "body"
   },
   "elements": [
     {
-      "name": "appNav",
+      "name": "navigationBar",
       "type": "utam-global/pageObjects/appNav",
       "public": true,
       "selector": {
@@ -13,9 +13,9 @@
       }
     },
     {
-      "name" : "activeFlexiPage",
-      "selector" : {
-        "css" : ".oneContent.active app_flexipage-lwc-app-flexipage"
+      "name": "activeFlexiPage",
+      "selector": {
+        "css": ".oneContent.active app_flexipage-lwc-app-flexipage"
       },
       "type": "utam-sfdx/pageObjects/appFlexipage",
       "public": true

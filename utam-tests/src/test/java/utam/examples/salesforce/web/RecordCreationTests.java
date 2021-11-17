@@ -37,7 +37,7 @@ public class RecordCreationTests extends SalesforceWebTestBase {
   @BeforeTest
   public void setup() {
     setupChrome();
-    loginToHomePage(testEnvironment);
+    login(testEnvironment, "home");
   }
 
   @Test
@@ -72,7 +72,10 @@ public class RecordCreationTests extends SalesforceWebTestBase {
     BaseRecordForm recordForm = recordFormModal.getRecordForm();
     LwcRecordLayout recordLayout = recordForm.getRecordLayout();
 
+    log("Access record form item by index");
     RecordLayoutItem item = recordLayout.getItem(1, 2, 1);
+
+    log("Enter account name");
     final String accountName = "Utam";
     item.getInputField(RecordLayoutBaseInput.class).getInput().setText(accountName);
 

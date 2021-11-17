@@ -17,10 +17,6 @@
           ]
         },
         {
-          "element": "section",
-          "returnType": "utam-records/pageObjects/recordLayoutSection"
-        },
-        {
           "chain": true,
           "element": "row",
           "returnType": "utam-records/pageObjects/recordLayoutRow",
@@ -39,6 +35,24 @@
             {
               "name": "itemIndex",
               "type": "number"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "waitForHighlights2",
+      "compose": [
+        {
+          "apply": "waitFor",
+          "args": [
+            {
+              "type": "function",
+              "predicate": [
+                {
+                  "element": "highlights2"
+                }
+              ]
             }
           ]
         }

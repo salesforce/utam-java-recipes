@@ -34,7 +34,7 @@ or set path from test with `System.setProperty("webdriver.chrome.driver", <path 
 
 - To login to environment via UI at the beginning of the test, add env.properties file to the [test resources root](https://github.com/salesforce/utam-java-recipes/tree/main/utam-tests/src/test/resources) 
 
-Content of the file should look like this, where "sandbox" is name of the environment as file can reference more than one.
+Content of the file should look like this, where "sandbox" is name of the environment (env file can reference more than one):
 
 ```properties
 sandbox.url=https://sandbox.salesforce.com/
@@ -58,54 +58,51 @@ TestEnvironment testEnvironment = getTestEnvironment("sandobox");
 
 ## Run SFDX scratch org test 
 
-- Requirements:
-    - Node >= 14.x.x
-    - Yarn >= 1.x.x
-
-- Follow the steps in the [Quick Start: Lightning Web Components](https://trailhead.salesforce.com/content/learn/projects/quick-start-lightning-web-components/) Trailhead project. 
-The steps include:
-    - Enable Dev Hub in your Trailhead Playground
-    - Install Salesforce CLI
-
+### Prerequisites
+- Node >= 14.x.x
+- Yarn >= 1.x.x
+- Enable Dev Hub in your Trailhead Playground
+- Install Salesforce CLI
 - Authorize your hub org and provide it with an alias (**myhuborg** in the command below). 
-Use the login credentials generated from your Trailhead Playground.
-```shell script
-sfdx auth:web:login -d -a myhuborg
-```
-- Create a scratch org and provide it with an alias (**utam-recipes** in the command below):
- ```shell script
-sfdx force:org:create -s -f config/project-scratch-def.json -a utam-recipes
-```
+  Use the login credentials generated from your Trailhead Playground.
+  ```shell script
+  sfdx auth:web:login -d -a myhuborg
+  ```
 
-- Push the app to your scratch org:
+> See Trailhead 
+> [Quick Start: Lightning Web Components](https://trailhead.salesforce.com/content/learn/projects/quick-start-lightning-web-components/)
+> for Dev Hub and CLI setup information 
+
+### Scratch org setup
+
+1. If you already had utam-recipes org, delete previously created org 
+```shell script
+sfdx force:org:delete -u utam-recipes
+```
+2. Create a scratch org and provide it with an alias **utam-recipes**:
+ ```shell script
+sfdx force:org:create -s -f config/project-scratch-def.json -a utam-recipes --durationdays 30
+```
+3. Push force-app to your scratch org:
 ```shell script
 sfdx force:source:push
 ```
-
-- Assign the **utam** permission set to the default user:
+4. Assign the **utam** permission set to the default user:
 ```shell script
 sfdx force:user:permset:assign -n utam
 ```
-> Tip: if this step throws an error `Permission set not found in target org`, run `sfdx plugins:install user` and re-create org again:
-> - find created org `sfdx force:org:list --all`
-> - delete previously created org with `sfdx force:org:delete`, it will prompt you to delete first org from list, 
-> or specify org alias or email `sfdx force:org:delete -u utam-recipes`
-> - run command that creates org
+> Tip: if this step throws an error `Permission set not found in target org`, run `sfdx plugins:install user` and repeat steps 1-4
 
-- Open the scratch org, this command should open your org in the browser
-```shell script
-sfdx force:org:open
-```
-
-- Generate login URL for your scratch org, run:
+5. Generate login URL for your scratch org, run:
 ```shell script
 sfdx force:org:open -p /lightning -r --json
 ```
-Copy result.url from JSON printed into terminal and copy it to env.properties file  
+This command will print out JSON to your terminal, copy result.url from JSON printed into terminal and copy it to env.properties file  
 ```properties
 # scratch org can login by Url
-sfdxScratchOrg.sfdxUrl=https://<scratch-org-name>.cs22.my.salesforce.com/secur/frontdoor.jsp?sid=<generated-sid>
+scratchOrg.sfdx.url=https://<scratch-org-name>.cs22.my.salesforce.com/secur/frontdoor.jsp?sid=<generated-sid>
 ```
+> Tip: If you want to open scratch org in your local browser, run `sfdx force:org:open`
 
 ## Run Salesforce Mobile test
 - Follow the instruction at [Get Started for Mobile](https://utam.dev/guide/get_started_utam#get-started-for-mobile) to setup your local simulator/emulator.

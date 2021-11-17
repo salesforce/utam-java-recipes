@@ -10,8 +10,8 @@ package utam.examples.salesforce.web;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import utam.navex.pageobjects.DesktopLayoutContainer;
 import utam.sfdx.pageobjects.Hello;
+import utam.sfdx.pageobjects.HomePage;
 import utam.sfdx.pageobjects.WireGetObjectInfo;
 import utam.utils.salesforce.TestEnvironment;
 
@@ -23,18 +23,18 @@ import utam.utils.salesforce.TestEnvironment;
  */
 public class SfdxScratchOrgTests extends SalesforceWebTestBase {
 
-  private DesktopLayoutContainer appHomePage;
+  private HomePage appHomePage;
 
   @BeforeTest
   public void loginToRecipeApp() {
     setupChrome();
-    TestEnvironment testEnvironment = getTestEnvironment("myOrg");
+    TestEnvironment testEnvironment = getTestEnvironment("scratchOrg");
     log("Navigate to login URL for a scratch org");
     getDriver().get(testEnvironment.getSfdxLoginUrl());
     log("Wait for Home Page URL");
     getDomDocument().waitFor(() -> getDomDocument().getUrl().contains("Hello"));
     log("Wait for Application Home Page to load");
-    appHomePage = from(DesktopLayoutContainer.class);
+    appHomePage = from(HomePage.class);
   }
 
   @Test
@@ -51,7 +51,7 @@ public class SfdxScratchOrgTests extends SalesforceWebTestBase {
   public void testWireComponent() {
     log("Click 'Wire' in app navigation menu and wait for URL navigation");
     appHomePage
-        .getAppNav()
+        .getNavigationBar()
         .getAppNavBar()
         .getNavItem("Wire")
         .clickAndWaitForUrl("lightning/n/Wire");

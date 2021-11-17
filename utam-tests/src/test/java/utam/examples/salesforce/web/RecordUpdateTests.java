@@ -35,7 +35,7 @@ public class RecordUpdateTests extends SalesforceWebTestBase {
   @BeforeTest
   public void setup() {
     setupChrome();
-    loginToHomePage(testEnvironment);
+    login(testEnvironment, "home");
   }
 
   @Test
@@ -63,11 +63,14 @@ public class RecordUpdateTests extends SalesforceWebTestBase {
     BaseRecordForm recordForm = recordFormModal.getRecordForm();
     LwcRecordLayout recordLayout = recordForm.getRecordLayout();
 
+    log("Access record form item by index");
     RecordLayoutItem item = recordLayout.getItem(1, 2, 1);
+
+    log("Enter updated account name");
     final String accountName = "Utam";
     item.getInputField(RecordLayoutBaseInput.class).getInput().setText(accountName);
 
-    log("Save new record");
+    log("Save updated record");
     recordForm.clickFooterButton("Save");
     recordFormModal.waitForAbsence();
   }

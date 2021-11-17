@@ -30,7 +30,7 @@
         },
         {
           "chain": true,
-          "element": "highlights2",
+          "apply": "waitForHighlights2",
           "returnType": "utam-records/pageObjects/highlights2"
         },
         {
