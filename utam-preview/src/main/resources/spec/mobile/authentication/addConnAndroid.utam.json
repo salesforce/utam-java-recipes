@@ -4,7 +4,7 @@
    "platform":"native",
    "profile":[
       {
-         "platform":"android"
+         "platform":"android_phone"
       }
    ],
    "selector":{
