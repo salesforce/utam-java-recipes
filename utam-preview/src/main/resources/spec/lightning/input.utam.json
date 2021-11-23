@@ -231,6 +231,15 @@
           "css": ".slds-form-element__help"
         },
         "public": true
+      },
+      {
+        "name": "datepicker",
+        "public": true,
+        "nullable": true,
+        "type": "utam-lightning/pageObjects/datepicker",
+        "selector": {
+          "css": "lightning-datepicker"
+        }
       }
     ]
   }

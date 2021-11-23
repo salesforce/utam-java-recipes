@@ -20,5 +20,25 @@
       "type": "utam-sfdx/pageObjects/appFlexipage",
       "public": true
     }
+  ],
+  "methods" : [
+    {
+      "name" : "getComponent",
+      "compose" : [
+        {
+          "element" : "activeFlexiPage"
+        },
+        {
+          "chain" : true,
+          "apply" : "waitForLoad",
+          "returnType": "utam-sfdx/pageObjects/appFlexipage"
+        },
+        {
+          "chain" : true,
+          "element": "flexipageComponent2",
+          "returnType": "utam-flexipage/pageObjects/component2"
+        }
+      ]
+    }
   ]
 }

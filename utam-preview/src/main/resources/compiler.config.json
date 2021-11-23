@@ -56,6 +56,10 @@
     {
       "typeMatch": "utam-sfdx",
       "pathMatch": ".*/force-app"
+    },
+    {
+      "typeMatch": "utam-sfa",
+      "pathMatch": ".*/sfa"
     }
   ]
 }

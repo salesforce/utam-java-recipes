@@ -15,10 +15,14 @@ import utam.force.pageobjects.ListViewManagerHeader;
 import utam.global.pageobjects.ConsoleObjectHome;
 import utam.global.pageobjects.RecordActionWrapper;
 import utam.global.pageobjects.RecordHomeFlexipage2;
+import utam.lightning.pageobjects.BaseCombobox;
+import utam.lightning.pageobjects.Input;
 import utam.records.pageobjects.BaseRecordForm;
 import utam.records.pageobjects.LwcRecordLayout;
 import utam.records.pageobjects.RecordLayoutBaseInput;
 import utam.records.pageobjects.RecordLayoutItem;
+import utam.records.pageobjects.RecordLayoutLookup;
+import utam.sfa.pageobjects.InputStageName;
 import utam.utils.salesforce.RecordType;
 import utam.utils.salesforce.TestEnvironment;
 
@@ -40,11 +44,15 @@ public class RecordCreationTests extends SalesforceWebTestBase {
     login(testEnvironment, "home");
   }
 
-  @Test
-  public void testAccountObjectHome() {
+  /**
+   * navigate to object home via URL and click New
+   *
+   * @param recordType record type affects navigation url
+   */
+  private void openRecordModal(RecordType recordType) {
 
-    log("Navigate to Accounts Object Home");
-    getDriver().get(RecordType.Account.getObjectHomeUrl(testEnvironment.getRedirectUrl()));
+    log("Navigate to an Object Home for " + recordType.name());
+    getDriver().get(recordType.getObjectHomeUrl(testEnvironment.getRedirectUrl()));
 
     log("Load Accounts Object Home page");
     ConsoleObjectHome objectHome = from(ConsoleObjectHome.class);
@@ -58,8 +66,9 @@ public class RecordCreationTests extends SalesforceWebTestBase {
     Assert.assertTrue(recordFormModal.isPresent(), "record creation modal did not appear");
   }
 
-  @Test(dependsOnMethods = {"testAccountObjectHome"})
+  @Test
   public void testAccountRecordCreation() {
+    openRecordModal(RecordType.Account);
 
     // todo - depending on org setup, modal might not present, then comment next lines
     log("Load Change Record Type Modal");
@@ -79,6 +88,54 @@ public class RecordCreationTests extends SalesforceWebTestBase {
     final String accountName = "Utam";
     item.getInputField(RecordLayoutBaseInput.class).getInput().setText(accountName);
 
+    log("Save new record");
+    recordForm.clickFooterButton("Save");
+    recordFormModal.waitForAbsence();
+
+    log("Load Accounts Record Home page");
+    from(RecordHomeFlexipage2.class);
+  }
+
+  @Test
+  public void testOpportunityRecordCreation() {
+    openRecordModal(RecordType.Opportunity);
+
+    log("Load Record Form Modal");
+    RecordActionWrapper recordFormModal = from(RecordActionWrapper.class);
+    BaseRecordForm recordForm = recordFormModal.getRecordForm();
+    LwcRecordLayout recordLayout = recordForm.getRecordLayout();
+
+    log("Enter 'Close date' as 01/01/2020");
+    RecordLayoutItem closeDateItem = recordLayout.getItem(1, 1, 2);
+    closeDateItem.getInputField(Input.class).getDatepicker().setDateText("01/01/2020");
+
+    log("Pick first option in a 'Stage' combobox");
+    RecordLayoutItem stageItem = recordLayout.getItem(1, 2, 2);
+    BaseCombobox stageCombobox =
+        stageItem
+            .getInputField(InputStageName.class)
+            .getRecordPicklist()
+            .getBasePicklist()
+            .getComboBox()
+            .getBase();
+    stageCombobox.expandForDisabledInput();
+    stageCombobox.getItems().get(1).clickItem();
+
+    log("Find and pick first account, link it to the opportunity");
+    RecordLayoutItem accountLookupItem = recordLayout.getItem(1, 3, 1);
+    BaseCombobox accountLookupCombobox =
+        accountLookupItem
+            .getInputField(RecordLayoutLookup.class)
+            .getLookup()
+            .getLookupDesktop()
+            .getGroupedCombobox()
+            .getBaseCombobox();
+    accountLookupCombobox.expand();
+    accountLookupCombobox.getItems().get(0).clickItem();
+
+    log("Enter opportunity name");
+    RecordLayoutItem nameItem = recordLayout.getItem(1, 2, 1);
+    nameItem.getInputField(RecordLayoutBaseInput.class).getInput().setText("Opportunity name");
     log("Save new record");
     recordForm.clickFooterButton("Save");
     recordFormModal.waitForAbsence();

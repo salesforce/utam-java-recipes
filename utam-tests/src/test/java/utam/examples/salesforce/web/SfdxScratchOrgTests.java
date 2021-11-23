@@ -40,7 +40,7 @@ public class SfdxScratchOrgTests extends SalesforceWebTestBase {
   @Test
   public void testHelloComponent() {
     log("Wait for Flexipage with Hello component to load");
-    Hello hello = appHomePage.getActiveFlexiPage().getFlexipageComponent2().getContent(Hello.class);
+    Hello hello = appHomePage.getComponent().getContent(Hello.class);
 
     log("Get and assert text inside the component");
     String expectedText = hello.getText();
@@ -57,11 +57,7 @@ public class SfdxScratchOrgTests extends SalesforceWebTestBase {
         .clickAndWaitForUrl("lightning/n/Wire");
 
     log("Wait for Flexipage with Wire component to load");
-    WireGetObjectInfo wireInfo =
-        appHomePage
-            .getActiveFlexiPage()
-            .getFlexipageComponent2()
-            .getContent(WireGetObjectInfo.class);
+    WireGetObjectInfo wireInfo = appHomePage.getComponent().getContent(WireGetObjectInfo.class);
 
     log("Enter search criteria and click 'Search', wait for response");
     wireInfo.searchAndWaitForResponse("Contact");

@@ -55,7 +55,7 @@
         {
           "name": "footerContent",
           "type": "container",
-          "public" : true
+          "public": true
         }
       ]
     }
@@ -95,12 +95,12 @@
                   "element": "footer"
                 },
                 {
-                  "returnType" : "utam-force/pageobjects/changeRecordTypeFooter",
+                  "returnType": "utam-force/pageObjects/changeRecordTypeFooter",
                   "element": "footerContent",
-                  "args" : [
+                  "args": [
                     {
-                      "type" : "pageObject",
-                      "value" : "utam-force/pageobjects/changeRecordTypeFooter"
+                      "type": "pageObject",
+                      "value": "utam-force/pageObjects/changeRecordTypeFooter"
                     }
                   ]
                 }
@@ -111,32 +111,42 @@
       ]
     },
     {
-      "name" : "getRecordForm",
-      "compose" : [
+      "name": "getRecordForm",
+      "compose": [
         {
-          "element" : "detailsPanelContainer",
-          "args" : [
+          "apply": "waitFor",
+          "args": [
             {
-              "type" : "pageObject",
-              "value" : "utam-records/pageObjects/modalLwcDetailPanelWrapper"
+              "type": "function",
+              "predicate": [
+                {
+                  "element": "detailsPanelContainer",
+                  "args": [
+                    {
+                      "type": "pageObject",
+                      "value": "utam-records/pageObjects/modalLwcDetailPanelWrapper"
+                    }
+                  ],
+                  "returnType": "utam-records/pageObjects/modalLwcDetailPanelWrapper"
+                }
+              ]
             }
-          ],
-          "returnType" : "utam-records/pageObjects/modalLwcDetailPanelWrapper"
+          ]
         },
         {
-          "element" : "lwcDetailPanel",
-          "chain" : true,
-          "returnType" : "utam-records/pageObjects/lwcDetailPanel"
+          "element": "lwcDetailPanel",
+          "chain": true,
+          "returnType": "utam-records/pageObjects/lwcDetailPanel"
         },
         {
-          "element" : "baseRecordForm",
-          "chain" : true,
-          "returnType" : "utam-records/pageObjects/baseRecordForm"
+          "element": "baseRecordForm",
+          "chain": true,
+          "returnType": "utam-records/pageObjects/baseRecordForm"
         },
         {
-          "apply" : "waitForLoad",
-          "chain" : true,
-          "returnType" : "utam-records/pageObjects/baseRecordForm"
+          "apply": "waitForLoad",
+          "chain": true,
+          "returnType": "utam-records/pageObjects/baseRecordForm"
         }
       ]
     }

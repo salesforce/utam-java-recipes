@@ -1,0 +1,14 @@
+{
+  "shadow": {
+    "elements": [
+      {
+        "name": "lookupDesktop",
+        "public": true,
+        "type": "utam-lightning/pageObjects/lookupDesktop",
+        "selector": {
+          "css": "lightning-lookup-desktop"
+        }
+      }
+    ]
+  }
+}

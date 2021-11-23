@@ -15,6 +15,9 @@ This Module also contains Salesforce Page Objects for default org setup that can
 Example of setup for UTAM Page Objects consumption along with test utilities and examples of Salesforce UI tests.
 Tests from this module can be run by TestNG runner from IDE.
 
+- force-app 
+Setup for scratch org tests - custom components and permissions. It is JavaScript module and is not included in the maven project.
+
 ## Initial setup
 
 - Clone repository and run `mvn clean install`
@@ -75,13 +78,15 @@ TestEnvironment testEnvironment = getTestEnvironment("sandobox");
 
 ### Scratch org setup
 
+To setup scratch org and login via URL, run following commands from the project root:
+
 1. If you already had utam-recipes org, delete previously created org 
 ```shell script
 sfdx force:org:delete -u utam-recipes
 ```
 2. Create a scratch org and provide it with an alias **utam-recipes**:
  ```shell script
-sfdx force:org:create -s -f config/project-scratch-def.json -a utam-recipes --durationdays 30
+sfdx force:org:create -s -f config/project-scratch-def.json -a utam-recipes
 ```
 3. Push force-app to your scratch org:
 ```shell script

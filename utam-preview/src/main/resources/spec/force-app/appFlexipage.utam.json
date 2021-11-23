@@ -1,62 +1,29 @@
 {
-  "beforeLoad": [
+  "methods": [
     {
-      "apply": "waitFor",
-      "args": [
+      "name": "waitForLoad",
+      "compose": [
         {
-          "type": "function",
-          "predicate": [
+          "apply": "waitFor",
+          "args": [
             {
-              "element": "root",
-              "apply": "isPresent"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "apply": "waitFor",
-      "args": [
-        {
-          "type": "function",
-          "predicate": [
-            {
-              "element": "internal",
-              "apply": "containsElement",
-              "args": [
+              "type": "function",
+              "predicate": [
                 {
-                  "type": "locator",
-                  "value": {
-                    "css": ".adg-rollup-wrapped"
-                  }
-                },
-                {
-                  "value": true
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "apply": "waitFor",
-      "args": [
-        {
-          "type": "function",
-          "predicate": [
-            {
-              "element": "module",
-              "apply": "containsElement",
-              "args": [
-                {
-                  "type": "locator",
-                  "value": {
-                    "css": ".forcegenerated-flexipage-template"
-                  }
-                },
-                {
-                  "value": true
+                  "returnType": "self",
+                  "element": "module",
+                  "apply": "containsElement",
+                  "args": [
+                    {
+                      "type": "locator",
+                      "value": {
+                        "css": ".forcegenerated-flexipage-template"
+                      }
+                    },
+                    {
+                      "value": true
+                    }
+                  ]
                 }
               ]
             }
@@ -96,11 +63,11 @@
                           "elements": [
                             {
                               "name": "flexipageComponent2",
-                              "type": "utam-flexipage/pageobjects/component2",
+                              "type": "utam-flexipage/pageObjects/component2",
                               "selector": {
                                 "css": "flexipage-component2"
                               },
-                              "public" : true
+                              "public": true
                             }
                           ]
                         }
