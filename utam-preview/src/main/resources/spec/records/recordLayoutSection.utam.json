@@ -94,7 +94,7 @@
         "css": "records-record-layout-row:nth-of-type(%d)",
         "args" : [
           {
-            "name" : "index",
+            "name" : "indexStartingOne",
             "type" : "number"
           }
         ]

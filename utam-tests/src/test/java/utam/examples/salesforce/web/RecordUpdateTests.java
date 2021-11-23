@@ -38,16 +38,18 @@ public class RecordUpdateTests extends SalesforceWebTestBase {
     login(testEnvironment, "home");
   }
 
+  private void gotoRecordHomeByUrl(RecordType recordType, String recordId) {
+    String recordHomeUrl = recordType.getRecordHomeUrl(testEnvironment.getRedirectUrl(), recordId);
+    log("Navigate to the Record Home by URL: " + recordHomeUrl);
+    getDriver().get(recordHomeUrl);
+  }
+
   @Test
   public void testEditAccountRecord() {
 
     // todo - replace with existing Account Id for the environment
     final String accountRecordId = "001S7000001pSmBIAU";
-    final String recordHomeUrl =
-        RecordType.Account.getRecordHomeUrl(testEnvironment.getRedirectUrl(), accountRecordId);
-
-    log("Navigate to the Account Record Home by URL: " + recordHomeUrl);
-    getDriver().get(recordHomeUrl);
+    gotoRecordHomeByUrl(RecordType.Account, accountRecordId);
 
     log("Load Accounts Record Home page");
     RecordHomeFlexipage2 recordHome = from(RecordHomeFlexipage2.class);
@@ -68,7 +70,7 @@ public class RecordUpdateTests extends SalesforceWebTestBase {
 
     log("Enter updated account name");
     final String accountName = "Utam";
-    item.getInputField(RecordLayoutBaseInput.class).getInput().setText(accountName);
+    item.getTextInput().setText(accountName);
 
     log("Save updated record");
     recordForm.clickFooterButton("Save");

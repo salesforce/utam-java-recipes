@@ -60,6 +60,71 @@
           ]
         }
       ]
+    },
+    {
+      "name" : "getTextInput",
+      "compose" : [
+        {
+          "returnType" : "utam-records/pageObjects/recordLayoutBaseInput",
+          "element" : "inputField",
+          "args" : [
+            {
+              "type" : "pageObject",
+              "value" : "utam-records/pageObjects/recordLayoutBaseInput"
+            }
+          ]
+        },
+        {
+          "chain" : true,
+          "element" : "input",
+          "returnType": "utam-lightning/pageObjects/input"
+        }
+      ]
+    },
+    {
+      "name" : "getLookup",
+      "compose" : [
+        {
+          "returnType" : "utam-records/pageObjects/recordLayoutLookup",
+          "element" : "inputField",
+          "args" : [
+            {
+              "type" : "pageObject",
+              "value" : "utam-records/pageObjects/recordLayoutLookup"
+            }
+          ]
+        },
+        {
+          "chain" : true,
+          "element" : "lookup",
+          "returnType": "utam-lightning/pageObjects/lookup"
+        }
+      ]
+    },
+    {
+      "name" : "getPicklist",
+      "compose" : [
+        {
+          "returnType" : "utam-sfa/pageObjects/inputStageName",
+          "element" : "inputField",
+          "args" : [
+            {
+              "type" : "pageObject",
+              "value" : "utam-sfa/pageObjects/inputStageName"
+            }
+          ]
+        },
+        {
+          "chain" : true,
+          "element": "recordPicklist",
+          "returnType": "utam-records/pageObjects/recordPicklist"
+        },
+        {
+          "apply" : "getBasePicklist",
+          "returnType": "utam-lightning/pageObjects/picklist",
+          "chain": true
+        }
+      ]
     }
   ],
   "elements": [

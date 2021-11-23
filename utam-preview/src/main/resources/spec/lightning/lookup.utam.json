@@ -10,5 +10,25 @@
         }
       }
     ]
-  }
+  },
+  "methods" : [
+    {
+      "name" : "getBaseCombobox",
+      "compose" : [
+        {
+          "element" : "lookupDesktop"
+        },
+        {
+          "chain" : true,
+          "element": "groupedCombobox",
+          "returnType": "utam-lightning/pageObjects/groupedCombobox"
+        },
+        {
+          "chain" : true,
+          "element": "baseCombobox",
+          "returnType": "utam-lightning/pageObjects/baseCombobox"
+        }
+      ]
+    }
+  ]
 }

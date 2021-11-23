@@ -86,7 +86,7 @@ sfdx force:org:delete -u utam-recipes
 ```
 2. Create a scratch org and provide it with an alias **utam-recipes**:
  ```shell script
-sfdx force:org:create -s -f config/project-scratch-def.json -a utam-recipes
+sfdx force:org:create -s -f config/project-scratch-def.json -a utam-recipes  --durationdays 30
 ```
 3. Push force-app to your scratch org:
 ```shell script

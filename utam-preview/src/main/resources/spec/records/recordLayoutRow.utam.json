@@ -16,7 +16,7 @@
         "css": "records-record-layout-item:nth-of-type(%d)",
         "args" : [
           {
-            "name" : "index",
+            "name" : "indexStartingOne",
             "type" : "number"
           }
         ]

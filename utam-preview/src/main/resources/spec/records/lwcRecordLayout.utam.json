@@ -107,7 +107,7 @@
                 "css": "records-record-layout-section:nth-of-type(%d)",
                 "args": [
                   {
-                    "name": "sectionIndex",
+                    "name": "indexStartingOne",
                     "type": "number"
                   }
                 ]

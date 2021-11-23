@@ -19,10 +19,7 @@ import utam.lightning.pageobjects.BaseCombobox;
 import utam.lightning.pageobjects.Input;
 import utam.records.pageobjects.BaseRecordForm;
 import utam.records.pageobjects.LwcRecordLayout;
-import utam.records.pageobjects.RecordLayoutBaseInput;
 import utam.records.pageobjects.RecordLayoutItem;
-import utam.records.pageobjects.RecordLayoutLookup;
-import utam.sfa.pageobjects.InputStageName;
 import utam.utils.salesforce.RecordType;
 import utam.utils.salesforce.TestEnvironment;
 
@@ -86,7 +83,7 @@ public class RecordCreationTests extends SalesforceWebTestBase {
 
     log("Enter account name");
     final String accountName = "Utam";
-    item.getInputField(RecordLayoutBaseInput.class).getInput().setText(accountName);
+    item.getTextInput().setText(accountName);
 
     log("Save new record");
     recordForm.clickFooterButton("Save");
@@ -111,31 +108,17 @@ public class RecordCreationTests extends SalesforceWebTestBase {
 
     log("Pick first option in a 'Stage' combobox");
     RecordLayoutItem stageItem = recordLayout.getItem(1, 2, 2);
-    BaseCombobox stageCombobox =
-        stageItem
-            .getInputField(InputStageName.class)
-            .getRecordPicklist()
-            .getBasePicklist()
-            .getComboBox()
-            .getBase();
-    stageCombobox.expandForDisabledInput();
-    stageCombobox.getItems().get(1).clickItem();
+    BaseCombobox stageCombobox = stageItem.getPicklist().getBaseCombobox();
+    stageCombobox.expandDisabledAndPickItem(2);
 
     log("Find and pick first account, link it to the opportunity");
     RecordLayoutItem accountLookupItem = recordLayout.getItem(1, 3, 1);
-    BaseCombobox accountLookupCombobox =
-        accountLookupItem
-            .getInputField(RecordLayoutLookup.class)
-            .getLookup()
-            .getLookupDesktop()
-            .getGroupedCombobox()
-            .getBaseCombobox();
-    accountLookupCombobox.expand();
-    accountLookupCombobox.getItems().get(0).clickItem();
+    BaseCombobox accountLookupCombobox = accountLookupItem.getLookup().getBaseCombobox();
+    accountLookupCombobox.expandAndPickItem(1);
 
     log("Enter opportunity name");
     RecordLayoutItem nameItem = recordLayout.getItem(1, 2, 1);
-    nameItem.getInputField(RecordLayoutBaseInput.class).getInput().setText("Opportunity name");
+    nameItem.getTextInput().setText("Opportunity name");
     log("Save new record");
     recordForm.clickFooterButton("Save");
     recordFormModal.waitForAbsence();
