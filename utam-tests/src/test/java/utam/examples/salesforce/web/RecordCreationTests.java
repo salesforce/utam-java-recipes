@@ -16,7 +16,6 @@ import utam.global.pageobjects.ConsoleObjectHome;
 import utam.global.pageobjects.RecordActionWrapper;
 import utam.global.pageobjects.RecordHomeFlexipage2;
 import utam.lightning.pageobjects.BaseCombobox;
-import utam.lightning.pageobjects.Input;
 import utam.records.pageobjects.BaseRecordForm;
 import utam.records.pageobjects.LwcRecordLayout;
 import utam.records.pageobjects.RecordLayoutItem;
@@ -104,17 +103,19 @@ public class RecordCreationTests extends SalesforceWebTestBase {
 
     log("Enter 'Close date' as 01/01/2020");
     RecordLayoutItem closeDateItem = recordLayout.getItem(1, 1, 2);
-    closeDateItem.getInputField(Input.class).getDatepicker().setDateText("01/01/2020");
+    closeDateItem.getDatepicker().setDateText("01/01/2020");
 
     log("Pick first option in a 'Stage' combobox");
     RecordLayoutItem stageItem = recordLayout.getItem(1, 2, 2);
     BaseCombobox stageCombobox = stageItem.getPicklist().getBaseCombobox();
-    stageCombobox.expandDisabledAndPickItem(2);
+    stageCombobox.expandForDisabledInput();
+    stageCombobox.pickItem(2);
 
     log("Find and pick first account, link it to the opportunity");
     RecordLayoutItem accountLookupItem = recordLayout.getItem(1, 3, 1);
-    BaseCombobox accountLookupCombobox = accountLookupItem.getLookup().getBaseCombobox();
-    accountLookupCombobox.expandAndPickItem(1);
+    BaseCombobox accountLookup = accountLookupItem.getLookup().getBaseCombobox();
+    accountLookup.expand();
+    accountLookup.pickItem(1);
 
     log("Enter opportunity name");
     RecordLayoutItem nameItem = recordLayout.getItem(1, 2, 1);
