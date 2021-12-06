@@ -14,21 +14,6 @@
       ]
     },
     {
-      "name": "expandAndPickItem",
-      "compose": [
-        {
-          "apply": "expand"
-        },
-        {
-          "element": "item"
-        },
-        {
-          "chain" : true,
-          "apply" : "clickItem"
-        }
-      ]
-    },
-    {
       "name": "expandForDisabledInput",
       "compose": [
         {
@@ -42,11 +27,8 @@
       ]
     },
     {
-      "name": "expandDisabledAndPickItem",
+      "name": "pickItem",
       "compose": [
-        {
-          "apply": "expandForDisabledInput"
-        },
         {
           "element": "item"
         },
