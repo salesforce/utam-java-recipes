@@ -104,7 +104,7 @@ public class RecordCreationTests extends SalesforceWebTestBase {
 
     log("Enter 'Close date' as 01/01/2020");
     RecordLayoutItem closeDateItem = recordLayout.getItem(1, 1, 2);
-    closeDateItem.getInputField(Input.class).getDatepicker().setDateText("01/01/2020");
+    closeDateItem.getDatepicker().setDateText("01/01/2020");
 
     log("Pick first option in a 'Stage' combobox");
     RecordLayoutItem stageItem = recordLayout.getItem(1, 2, 2);
