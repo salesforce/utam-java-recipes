@@ -101,23 +101,19 @@
         }
       ]
     },
+    // most record types use this picklist method
     {
       "name" : "getPicklist",
       "compose" : [
         {
-          "returnType" : "utam-sfa/pageObjects/inputStageName",
+          "returnType": "utam-records/pageObjects/recordPicklist",
           "element" : "inputField",
           "args" : [
             {
               "type" : "pageObject",
-              "value" : "utam-sfa/pageObjects/inputStageName"
+              "value" : "utam-records/pageObjects/recordPicklist"
             }
           ]
-        },
-        {
-          "chain" : true,
-          "element": "recordPicklist",
-          "returnType": "utam-records/pageObjects/recordPicklist"
         },
         {
           "apply" : "getBasePicklist",
@@ -126,6 +122,7 @@
         }
       ]
     },
+    // opportunities have picklist wrapped
     {
       "name" : "getStageNamePicklist",
       "compose" : [
