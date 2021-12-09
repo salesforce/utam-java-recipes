@@ -1,13 +1,11 @@
 # utam-java-recipes
 
-UI Test Automation Model (UTAM) is based on the popular Page Object model design pattern commonly used in UI tests. 
+UI Test Automation Model (UTAM) is based on the popular Page Object model design pattern commonly used in UI tests. UTAM documentation is [here](https://utam.dev/)
 
-UTAM documentation is [here](https://utam.dev/)
+## Initial setup
 
 This repository is a maven project with examples of UTAM compiler setup and UI tests written with UTAM.
 Project uses Java 11 and maven 4.
-
-## Initial setup
 
 - Clone repository and run `mvn clean install`
 ```shell script
