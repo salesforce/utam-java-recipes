@@ -29,9 +29,15 @@ public class UtamPortalTests extends UtamWebTestBase {
 
   @Test
   public void testMenu() {
+    log("Navigate to portal");
     getDriver().get("https://utam.dev");
+
+    log("Load Home Page");
     UtamDevHome homePage = from(UtamDevHome.class);
-    Assert.assertTrue(homePage.getMenuItems().size() == 3);
+
+    Assert.assertTrue(homePage.getMenuItems().size() == 3, "number of menu items");
+    homePage.getGrammarMenuItem().click();
+    Assert.assertEquals(getDomDocument().getUrl(), "https://utam.dev/grammar/spec");
   }
 
   @AfterTest
