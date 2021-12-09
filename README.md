@@ -1,41 +1,41 @@
 # utam-java-recipes
 
-Maven project with examples of compiler setup and testing with UTAM Java.
-Project uses Java 11 and maven 4.
-
-__IMPORTANT: Page objects and tests for Salesforce UI are compatible with application version 236__
-
-Modules:
-- utam-preview
-
-This is an example of setup for Page Objects authoring and compilation. 
-This Module also contains Salesforce Page Objects for default org setup that can be used to build Salesforce UI tests.
-
-- utam-tests
-Example of setup for UTAM Page Objects consumption along with test utilities and examples of Salesforce UI tests.
-Tests from this module can be run by TestNG runner from IDE.
-
-- force-app 
-Setup for scratch org tests - custom components and permissions. It is JavaScript module and is not included in the maven project.
+UI Test Automation Model (UTAM) is based on the popular Page Object model design pattern commonly used in UI tests. UTAM documentation is [here](https://utam.dev/)
 
 ## Initial setup
+
+This repository is a maven project with examples of UTAM compiler setup and UI tests written with UTAM.
+Project uses Java 11 and maven 4.
 
 - Clone repository and run `mvn clean install`
 ```shell script
 git clone https://github.com/salesforce/utam-java-recipes.git
 cd utam-java-recipes
+```
+- Import this project as a maven project in the IDE of your choice. 
+
+## Generate Page Objects
+
+Module utam-preview is an example of Page Objects authoring and compilation. 
+This Module also contains Salesforce Page Objects for default org setup that can be used to build Salesforce UI tests.
+
+__IMPORTANT: Page objects and tests for Salesforce UI are compatible with application version 236__
+
+To generate Page Objects, run maven build from the project root:
+```shell script
 mvn clean install
 ```
-- Import this project as maven project in the IDE of your choice
 
 ## Run Salesforce Web UI tests
+
+Module utam-tests contains example of setup for UTAM Page Objects consumption, test utilities and examples of Salesforce UI tests.
 
 Preconditions:
 
 - Download chromedriver and geckodriver in the user home directory (returned by `System.getProperty("user.home")`) 
 or set path from test with `System.setProperty("webdriver.chrome.driver", <path to chrome driver>)` and `System.setProperty("webdriver.gecko.driver", <path to gecko driver>)`
 
-- To login to environment via UI at the beginning of the test, add env.properties file to the [test resources root](https://github.com/salesforce/utam-java-recipes/tree/main/utam-tests/src/test/resources) 
+- To login to environment via UI at the beginning of the test, add env.properties file to the [utam-tests test resources root](https://github.com/salesforce/utam-java-recipes/tree/main/utam-tests/src/test/resources) 
 
 Content of the file should look like this, where "sandbox" is name of the environment (env file can reference more than one):
 
@@ -48,7 +48,7 @@ sandbox.redirectUrl=https://lightningapp.lightning.test1234.salesforce.com/
 ```
 Then in the login method inside test, provide prefix of your environment as a parameter
 ```java
-TestEnvironment testEnvironment = getTestEnvironment("sandobox");
+TestEnvironment testEnvironment = getTestEnvironment("sandbox");
 
   @BeforeTest
   public void setup() {
@@ -57,9 +57,15 @@ TestEnvironment testEnvironment = getTestEnvironment("sandobox");
   }
 ```
 
-- To run tests use your IDE, for example in Intellij IDEA click on the class or method and choose option to run a particular test
+- To run tests use your IDE, for example in Intellij IDEA click on the class or method and choose option to run a particular test. 
+Salesforce UI tests examples are located in [utam-tests module](https://github.com/salesforce/utam-java-recipes/tree/main/utam-tests/src/test/java/utam/examples/salesforce/web)
+
+- Example of UTAM setup for Web tests is in the [base class](https://github.com/salesforce/utam-java-recipes/blob/main/utam-tests/src/test/java/utam/base/UtamWebTestBase.java) 
 
 ## Run SFDX scratch org test 
+
+Module force-app contains setup of scratch org - custom components and permissions. 
+It is a JavaScript module and is not included in the maven project. Before running UI tests 
 
 ### Prerequisites
 - Node >= 14.x.x

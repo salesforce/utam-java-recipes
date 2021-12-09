@@ -32,7 +32,7 @@ import utam.utils.salesforce.TestEnvironment;
  */
 public class RecordCreationTests extends SalesforceWebTestBase {
 
-  final TestEnvironment testEnvironment = getTestEnvironment("na45");
+  final TestEnvironment testEnvironment = getTestEnvironment("sandbox");
 
   @BeforeTest
   public void setup() {
@@ -107,7 +107,7 @@ public class RecordCreationTests extends SalesforceWebTestBase {
 
     log("Pick first option in a 'Stage' combobox");
     RecordLayoutItem stageItem = recordLayout.getItem(1, 2, 2);
-    BaseCombobox stageCombobox = stageItem.getPicklist().getBaseCombobox();
+    BaseCombobox stageCombobox = stageItem.getStageNamePicklist().getBaseCombobox();
     stageCombobox.expandForDisabledInput();
     stageCombobox.pickItem(2);
 

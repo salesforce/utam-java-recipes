@@ -127,6 +127,31 @@
       ]
     },
     {
+      "name" : "getStageNamePicklist",
+      "compose" : [
+        {
+          "returnType" : "utam-sfa/pageObjects/inputStageName",
+          "element" : "inputField",
+          "args" : [
+            {
+              "type" : "pageObject",
+              "value" : "utam-sfa/pageObjects/inputStageName"
+            }
+          ]
+        },
+        {
+          "chain" : true,
+          "element": "recordPicklist",
+          "returnType": "utam-records/pageObjects/recordPicklist"
+        },
+        {
+          "apply" : "getBasePicklist",
+          "returnType": "utam-lightning/pageObjects/picklist",
+          "chain": true
+        }
+      ]
+    },
+    {
       "name" : "getDatepicker",
       "compose" : [
         {

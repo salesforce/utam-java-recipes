@@ -60,6 +60,10 @@
     {
       "typeMatch": "utam-sfa",
       "pathMatch": ".*/sfa"
+    },
+    {
+      "typeMatch": "utam-portal",
+      "pathMatch": ".*/portal"
     }
   ]
 }
