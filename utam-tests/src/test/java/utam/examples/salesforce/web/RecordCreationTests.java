@@ -32,7 +32,7 @@ import utam.utils.salesforce.TestEnvironment;
  */
 public class RecordCreationTests extends SalesforceWebTestBase {
 
-  final TestEnvironment testEnvironment = getTestEnvironment("na45");
+  final TestEnvironment testEnvironment = getTestEnvironment("sandbox");
 
   @BeforeTest
   public void setup() {
