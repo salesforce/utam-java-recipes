@@ -81,6 +81,11 @@
         },
         {
           "chain" : true,
+          "apply" : "waitForTemplate",
+          "returnType" : "utam-records/pageObjects/recordLayoutEventBroker"
+        },
+        {
+          "chain" : true,
           "returnType": "utam-flexipage/pageObjects/recordHomeTemplateDesktop2",
           "element" : "generatedTemplate",
           "args" : [
