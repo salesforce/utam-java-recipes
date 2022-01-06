@@ -5,9 +5,9 @@
   },
   "elements": [
     {
-      "name" : "container",
-      "type" : "container",
-      "public" : true
+      "name": "container",
+      "type": "container",
+      "public": true
     }
   ]
 }
