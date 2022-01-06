@@ -21,7 +21,7 @@ import utam.tests.pageobjects.NullableExample;
  * Example of test for https://utam.dev
  *
  * @author Salesforce
- * @since 236
+ * @since Dec 2021
  */
 public class UtamPortalTests extends UtamWebTestBase {
 

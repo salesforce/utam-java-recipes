@@ -15,7 +15,7 @@ import utam.utils.salesforce.TestEnvironment;
  * Base Class for Salesforce Web tests with login utilities
  *
  * @author salesforce
- * @since 236
+ * @since Dec 2021
  */
 abstract class SalesforceWebTestBase extends UtamWebTestBase {
 

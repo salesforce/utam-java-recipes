@@ -26,7 +26,7 @@ import utam.core.selenium.factory.WebDriverFactory;
  * Base Class for UTAM Mobile tests
  *
  * @author salesforce
- * @since 236
+ * @since Dec 2021
  */
 public abstract class UtamMobileTestBase {
 
