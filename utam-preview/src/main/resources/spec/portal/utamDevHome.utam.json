@@ -1,32 +1,48 @@
 {
-  "selector" : {
-    "css" : "body"
+  "selector": {
+    "css": "body"
   },
-  "root" : true,
-  "elements" : [
+  "root": true,
+  "elements": [
     {
-      "name" : "menu",
-      "selector" : {
-        "css" : ".menu"
+      "name": "persistentHeader",
+      "selector": {
+        "css": "header"
       },
-      "elements" : [
+      "elements": [
         {
-          "public" : true,
-          "name" : "grammarMenuItem",
-          "selector" : {
-            "css" : "[data-navbar-id='grammar']"
+          "name": "menu",
+          "selector": {
+            "css": ".menu"
           },
-          "type" : "clickable"
-        },
-        {
-          "public" : true,
-          "name" : "menuItems",
-          "selector" : {
-            "css" : "li",
-            "returnAll" : true
-          }
+          "elements": [
+            {
+              "public": true,
+              "name": "grammarMenuItem",
+              "selector": {
+                "css": "[data-navbar-id='grammar']"
+              },
+              "type": "clickable"
+            },
+            {
+              "public": true,
+              "type": "clickable",
+              "name": "menuItems",
+              "selector": {
+                "css": "li",
+                "returnAll": true
+              }
+            }
+          ]
         }
       ]
+    },
+    {
+      "name" : "content",
+      "public" : true,
+      "selector" : {
+        "css" : "main.content"
+      }
     }
   ]
 }
