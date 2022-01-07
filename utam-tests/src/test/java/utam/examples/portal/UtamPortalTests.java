@@ -15,9 +15,9 @@ import org.testng.annotations.Test;
 import utam.base.UtamWebTestBase;
 import utam.core.element.BasicElement;
 import utam.core.selenium.element.LocatorBy;
+import utam.portal.pageobjects.Dummy;
+import utam.portal.pageobjects.NullableExample;
 import utam.portal.pageobjects.UtamDevHome;
-import utam.tests.pageobjects.Login;
-import utam.tests.pageobjects.NullableExample;
 
 /**
  * Example of tests for https://utam.dev
@@ -56,8 +56,8 @@ public class UtamPortalTests extends UtamWebTestBase {
     navigateToPortalHome();
 
     log("Assert that a root page is not loaded");
-    // Login is just a random root page object that we know is not present
-    assert !getDomDocument().containsObject(Login.class);
+    // random root page object that we know is not present
+    assert !getDomDocument().containsObject(Dummy.class);
 
     log("Assert that a root element with a given locator is not present");
     assert !getDomDocument().containsElement(LocatorBy.byCss("idonotexist"));
@@ -71,20 +71,19 @@ public class UtamPortalTests extends UtamWebTestBase {
     log("Load Home Page");
     NullableExample homePage = from(NullableExample.class);
 
-    log("Assert that non existing nullable basic element is returned as null");
+    log("Non existing nullable basic element is returned as null");
     assert homePage.getNullableBasicElement() == null;
 
-    log("Assert that non existing nullable basic elements list is returned as null");
+    log("Non existing nullable basic elements list is returned as null");
     assert homePage.getNullableBasicElementList() == null;
 
-    log("Assert that non existing nullable custom element is returned as null");
+    log("Non existing nullable custom element is returned as null");
     assert homePage.getNullableCustomElement() == null;
 
-    log("Assert that non existing nullable custom elements list is returned as null");
+    log("Non existing nullable custom elements list is returned as null");
     assert homePage.getNullableCustomElementList() == null;
 
-    log(
-        "Assert that nullable element scoped inside non existing nullable basic element is returned as null");
+    log("Nullable element scoped inside non existing nullable basic element is returned as null");
     assert homePage.getScopedInsideNullable() == null;
   }
 
