@@ -33,7 +33,7 @@
     },
     {
       "name": "nullableCustomElement",
-      "type": "utam-tests/pageObjects/login",
+      "type": "utam-portal/pageObjects/dummy",
       "selector": {
         "css": ".idontexist"
       },
@@ -42,7 +42,7 @@
     },
     {
       "name": "nullableCustomElementList",
-      "type": "utam-tests/pageObjects/login",
+      "type": "utam-portal/pageObjects/dummy",
       "selector": {
         "css": ".idontexist",
         "returnAll": true
@@ -52,3 +52,4 @@
     }
   ]
 }
+
