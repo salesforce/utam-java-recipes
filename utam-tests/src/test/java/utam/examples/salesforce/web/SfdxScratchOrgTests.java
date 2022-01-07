@@ -19,7 +19,7 @@ import utam.utils.salesforce.TestEnvironment;
  * Test for a scratch org. See README for setup.
  *
  * @author Salesforce
- * @since 236
+ * @since Dec 2021
  */
 public class SfdxScratchOrgTests extends SalesforceWebTestBase {
 

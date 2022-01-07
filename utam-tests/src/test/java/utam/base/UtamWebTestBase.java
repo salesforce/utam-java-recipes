@@ -24,12 +24,12 @@ import utam.utils.salesforce.TestEnvironment;
  * Base Class for Web tests
  *
  * @author salesforce
- * @since 236
+ * @since Dec 2021
  */
 public abstract class UtamWebTestBase {
 
   private WebDriver driver;
-  private UtamLoader loader;
+  protected UtamLoader loader;
 
   static String getUserHomeRelativePath(String fileName) {
     return System.getProperty("user.home") + System.getProperty("file.separator") + fileName;
