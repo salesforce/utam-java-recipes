@@ -15,7 +15,7 @@ package utam.utils.salesforce;
  */
 public enum RecordType {
   Account,
-  Lead,
+  Contact,
   Opportunity;
 
   public String getObjectHomeUrl(String baseUrl) {
