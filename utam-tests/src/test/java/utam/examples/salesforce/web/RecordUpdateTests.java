@@ -7,22 +7,21 @@
  */
 package utam.examples.salesforce.web;
 
+import static org.testng.Assert.assertEquals;
+
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import utam.flexipage.pageobjects.RecordHomeTemplateDesktop2;
 import utam.flexipage.pageobjects.Tab2;
 import utam.global.pageobjects.RecordActionWrapper;
 import utam.global.pageobjects.RecordHomeFlexipage2;
 import utam.lightning.pageobjects.FormattedName;
 import utam.lightning.pageobjects.TabBar;
 import utam.lightning.pageobjects.Tabset;
-import utam.record.flexipage.pageobjects.RecordPageDecorator;
 import utam.records.pageobjects.BaseRecordForm;
 import utam.records.pageobjects.LwcDetailPanel;
 import utam.records.pageobjects.LwcHighlightsPanel;
 import utam.records.pageobjects.LwcRecordLayout;
-import utam.records.pageobjects.RecordLayoutEventBroker;
 import utam.records.pageobjects.RecordLayoutItem;
 import utam.utils.salesforce.RecordType;
 import utam.utils.salesforce.TestEnvironment;
@@ -84,25 +83,6 @@ public class RecordUpdateTests extends SalesforceWebTestBase {
     recordFormModal.waitForAbsence();
   }
 
-  private static LwcDetailPanel clickAndGetDetails(Tabset tabset) {
-    TabBar tabBar = tabset.getTabBar();
-    String activeTabName = tabBar.getActiveTabText();
-    if (!"Details".equalsIgnoreCase(activeTabName)) {
-      tabBar.clickTab("Details");
-    }
-    return tabset.getActiveTabContent(Tab2.class).getDetailPanel();
-  }
-
-  private static void clickButtonOnDetailsFooter(LwcDetailPanel details, String action) {
-    details.getBaseRecordForm()
-        .getFooter()
-        .getActionsRibbon()
-        .waitForRenderedAction(action)
-        .getHeadlessAction()
-        .getLightningButton()
-        .click();
-  }
-
   @Test
   public void testInlineEditContactRecord() {
 
@@ -110,20 +90,39 @@ public class RecordUpdateTests extends SalesforceWebTestBase {
     gotoRecordHomeByUrl(RecordType.Contact, recordId);
 
     RecordHomeFlexipage2 recordHome = from(RecordHomeFlexipage2.class);
-    RecordPageDecorator statement0 = recordHome.getDecorator();
-    RecordLayoutEventBroker statement1 = statement0.getEventBroker();
-    RecordLayoutEventBroker statement2 = statement1.waitForTemplate();
-    RecordHomeTemplateDesktop2 statement3 = statement2.getGeneratedTemplate(RecordHomeTemplateDesktop2.class);
+    Tabset tabset = recordHome.getContactTabset();
 
-    LwcDetailPanel detailPanel = clickAndGetDetails(statement3.getTabset2().getTabset());
+    log("Select 'Details' tab");
+    TabBar tabBar = tabset.getTabBar();
+    String activeTabName = tabBar.getActiveTabText();
+    if (!"Details".equalsIgnoreCase(activeTabName)) {
+      tabBar.clickTab("Details");
+    }
+    log("Access Name field on Details panel");
+    LwcDetailPanel detailPanel = tabset.getActiveTabContent(Tab2.class).getDetailPanel();
     LwcRecordLayout recordLayout = detailPanel.getBaseRecordForm().getRecordLayout();
     RecordLayoutItem nameItem = recordLayout.getItem(1,2,1);
 
-    String text = nameItem.getOutputField(FormattedName.class).getInnerText();
+    log("Remember value of the name field");
+    String nameString = nameItem.getOutputField(FormattedName.class).getInnerText();
+
+    log("Click inline edit (pencil) next to the Name field");
     nameItem.getInlineEditButton().click();
-    clickButtonOnDetailsFooter(detailPanel, "Save");
+
+    log("Click Save at the bottom of Details panel");
+    detailPanel.getBaseRecordForm()
+        .getFooter()
+        .getActionsRibbon()
+        .waitForRenderedAction("Save")
+        .getHeadlessAction()
+        .getLightningButton()
+        .click();
+
+    log("Wait for field to be updated");
     nameItem.waitForOutputField();
-    assert nameItem.getOutputField(FormattedName.class).getInnerText().equals(text);
+
+    log("Check that field value has not changed");
+    assertEquals(nameItem.getOutputField(FormattedName.class).getInnerText(), nameString);
   }
 
   @AfterTest
