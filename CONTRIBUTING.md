@@ -185,10 +185,13 @@ Sometimes your feature branch will get stale with respect to the master branch, 
 following steps can help:
 
 ```bash
+$ git fetch upstream
 $ git checkout main
-$ git pull origin main
+$ git pull
+$ git merge upstream/main
+$ git push
 $ git checkout <name-of-the-feature>
-$ git rebase upstream/main
+$ git rebase main
 ```
 
 _note: If no conflicts arise, these commands will ensure that your changes are applied on top of the master branch. Any
