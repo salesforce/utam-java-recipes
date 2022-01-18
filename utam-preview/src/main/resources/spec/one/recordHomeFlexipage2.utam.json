@@ -68,7 +68,7 @@
   },
   "methods" : [
     {
-      "name" : "getAccountHighlights",
+      "name" : "getHighlights",
       "compose" : [
         {
           "element" : "decorator",

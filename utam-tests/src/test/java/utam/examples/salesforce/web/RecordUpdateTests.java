@@ -20,6 +20,11 @@ import utam.records.pageobjects.RecordLayoutItem;
 import utam.utils.salesforce.RecordType;
 import utam.utils.salesforce.TestEnvironment;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 /**
  * IMPORTANT: Page objects and tests for Salesforce UI are compatible with application version 236.
  * Test environment is private SF sandbox, not available for external users and has DEFAULT org
@@ -55,7 +60,7 @@ public class RecordUpdateTests extends SalesforceWebTestBase {
     RecordHomeFlexipage2 recordHome = from(RecordHomeFlexipage2.class);
 
     log("Access Record Highlights panel");
-    LwcHighlightsPanel highlightsPanel = recordHome.getAccountHighlights();
+    LwcHighlightsPanel highlightsPanel = recordHome.getHighlights();
 
     log("Wait for button 'Edit' and click on it");
     highlightsPanel.getActions().waitForRenderedAction("Edit").clickButton();
@@ -71,6 +76,42 @@ public class RecordUpdateTests extends SalesforceWebTestBase {
     log("Enter updated account name");
     final String accountName = "Utam";
     item.getTextInput().setText(accountName);
+
+    log("Save updated record");
+    recordForm.clickFooterButton("Save");
+    recordFormModal.waitForAbsence();
+  }
+
+  @Test
+  public void testEditLeadRecord() {
+
+    // todo - replace with existing Lead Id for the environment
+    final String leadId = "00QS7000001OXVqMAO";
+    gotoRecordHomeByUrl(RecordType.Lead, leadId);
+
+    log("Load Lead Record Home page");
+    RecordHomeFlexipage2 recordHome = from(RecordHomeFlexipage2.class);
+
+    log("Access Lead Highlights panel");
+    LwcHighlightsPanel highlightsPanel = recordHome.getHighlights();
+
+    log("Wait for button 'Edit' and click on it");
+    highlightsPanel.getActions().waitForRenderedAction("Edit").clickButton();
+
+    log("Load Record Form Modal");
+    RecordActionWrapper recordFormModal = from(RecordActionWrapper.class);
+    BaseRecordForm recordForm = recordFormModal.getRecordForm();
+    LwcRecordLayout recordLayout = recordForm.getRecordLayout();
+
+    log("Access record form item by index");
+    RecordLayoutItem item = recordLayout.getItem(1, 3, 1);
+
+    log("Enter updated lead company name");
+    final String formattedDate = DateFormat
+            .getDateTimeInstance(DateFormat.MEDIUM, DateFormat.SHORT)
+            .format(Calendar.getInstance().getTime());
+    final String updatedLeadCompanyName = "Utam and Co. updated on " + formattedDate;
+    item.getTextInput().setText(updatedLeadCompanyName);
 
     log("Save updated record");
     recordForm.clickFooterButton("Save");
