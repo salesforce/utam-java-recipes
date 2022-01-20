@@ -26,6 +26,11 @@ import utam.records.pageobjects.RecordLayoutItem;
 import utam.utils.salesforce.RecordType;
 import utam.utils.salesforce.TestEnvironment;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 /**
  * IMPORTANT: Page objects and tests for Salesforce UI are compatible with application version 236.
  * Test environment is private SF sandbox, not available for external users and has DEFAULT org
@@ -101,7 +106,7 @@ public class RecordUpdateTests extends SalesforceWebTestBase {
     log("Access Name field on Details panel");
     LwcDetailPanel detailPanel = tabset.getActiveTabContent(Tab2.class).getDetailPanel();
     LwcRecordLayout recordLayout = detailPanel.getBaseRecordForm().getRecordLayout();
-    RecordLayoutItem nameItem = recordLayout.getItem(1,2,1);
+    RecordLayoutItem nameItem = recordLayout.getItem(1, 2, 1);
 
     log("Remember value of the name field");
     String nameString = nameItem.getOutputField(FormattedName.class).getInnerText();
@@ -110,19 +115,50 @@ public class RecordUpdateTests extends SalesforceWebTestBase {
     nameItem.getInlineEditButton().click();
 
     log("Click Save at the bottom of Details panel");
-    detailPanel.getBaseRecordForm()
-        .getFooter()
-        .getActionsRibbon()
-        .waitForRenderedAction("Save")
-        .getHeadlessAction()
-        .getLightningButton()
-        .click();
+    detailPanel.getBaseRecordForm().getFooter().getActionsRibbon().waitForRenderedAction("Save")
+        .getHeadlessAction().getLightningButton().click();
 
     log("Wait for field to be updated");
     nameItem.waitForOutputField();
 
     log("Check that field value has not changed");
     assertEquals(nameItem.getOutputField(FormattedName.class).getInnerText(), nameString);
+  }
+
+  @Test
+  public void testEditLeadRecord() {
+
+    // todo - replace with existing Lead Id for the environment
+    final String leadId = "00QS7000001OXVqMAO";
+    gotoRecordHomeByUrl(RecordType.Lead, leadId);
+
+    log("Load Lead Record Home page");
+    RecordHomeFlexipage2 recordHome = from(RecordHomeFlexipage2.class);
+
+    log("Access Lead Highlights panel");
+    LwcHighlightsPanel highlightsPanel = recordHome.getHighlights();
+
+    log("Wait for button 'Edit' and click on it");
+    highlightsPanel.getActions().waitForRenderedAction("Edit").clickButton();
+
+    log("Load Record Form Modal");
+    RecordActionWrapper recordFormModal = from(RecordActionWrapper.class);
+    BaseRecordForm recordForm = recordFormModal.getRecordForm();
+    LwcRecordLayout recordLayout = recordForm.getRecordLayout();
+
+    log("Access record form item by index");
+    RecordLayoutItem item = recordLayout.getItem(1, 3, 1);
+
+    log("Enter updated lead company name");
+    final String formattedDate = DateFormat
+            .getDateTimeInstance(DateFormat.MEDIUM, DateFormat.SHORT)
+            .format(Calendar.getInstance().getTime());
+    final String updatedLeadCompanyName = "Utam and Co. updated on " + formattedDate;
+    item.getTextInput().setText(updatedLeadCompanyName);
+
+    log("Save updated record");
+    recordForm.clickFooterButton("Save");
+    recordFormModal.waitForAbsence();
   }
 
   @AfterTest
