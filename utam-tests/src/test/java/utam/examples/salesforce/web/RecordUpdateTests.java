@@ -61,7 +61,7 @@ public class RecordUpdateTests extends SalesforceWebTestBase {
     RecordHomeFlexipage2 recordHome = from(RecordHomeFlexipage2.class);
 
     log("Access Record Highlights panel");
-    LwcHighlightsPanel highlightsPanel = recordHome.getAccountHighlights();
+    LwcHighlightsPanel highlightsPanel = recordHome.getHighlights();
 
     log("Wait for button 'Edit' and click on it");
     highlightsPanel.getActions().waitForRenderedAction("Edit").clickButton();
