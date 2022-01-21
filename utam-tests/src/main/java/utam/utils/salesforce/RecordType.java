@@ -15,6 +15,7 @@ package utam.utils.salesforce;
  */
 public enum RecordType {
   Account,
+  Contact,
   Lead,
   Opportunity;
 
