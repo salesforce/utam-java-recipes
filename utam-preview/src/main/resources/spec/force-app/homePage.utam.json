@@ -3,6 +3,30 @@
   "selector": {
     "css": "body"
   },
+  "beforeLoad": [
+    {
+      "apply": "waitFor",
+      "args": [
+        {
+          "type": "function",
+          "predicate": [
+            {
+              "element": "root",
+              "apply": "containsElement",
+              "args": [
+                {
+                  "type" : "locator",
+                  "value": {
+                    "css": ".oneContent.active app_flexipage-lwc-app-flexipage"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
   "elements": [
     {
       "name": "navigationBar",
@@ -21,20 +45,20 @@
       "public": true
     }
   ],
-  "methods" : [
+  "methods": [
     {
-      "name" : "getComponent",
-      "compose" : [
+      "name": "getComponent",
+      "compose": [
         {
-          "element" : "activeFlexiPage"
+          "element": "activeFlexiPage"
         },
         {
-          "chain" : true,
-          "apply" : "waitForLoad",
+          "chain": true,
+          "apply": "waitForLoad",
           "returnType": "utam-sfdx/pageObjects/appFlexipage"
         },
         {
-          "chain" : true,
+          "chain": true,
           "element": "flexipageComponent2",
           "returnType": "utam-flexipage/pageObjects/component2"
         }
