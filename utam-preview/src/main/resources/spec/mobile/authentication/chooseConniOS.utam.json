@@ -7,6 +7,22 @@
       "platform": ["ios_phone", "ios_tablet"]
     }
   ],
+  "beforeLoad":[
+     {
+        "apply": "waitFor",
+        "args": [
+            {
+                "type": "function", 
+                "predicate": [
+                    {
+                        "element": "root",
+                        "apply": "isPresent"
+                    }
+                ]
+            }
+        ]
+      }
+   ],
   "selector": {
     "classchain": "**/XCUIElementTypeOther[$type == 'XCUIElementTypeNavigationBar' AND name ='Choose Connection'$][1]"
   },

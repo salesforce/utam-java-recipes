@@ -7,6 +7,22 @@
       "platform": ["android_phone", "android_tablet"]
     }
   ],
+  "beforeLoad":[
+     {
+        "apply": "waitFor",
+        "args": [
+            {
+                "type": "function", 
+                "predicate": [
+                    {
+                        "element": "root",
+                        "apply": "isPresent"
+                    }
+                ]
+            }
+        ]
+      }
+   ],
   "selector": {
     "uiautomator": "resourceId(\"android:id/action_bar_container\")"
   },
