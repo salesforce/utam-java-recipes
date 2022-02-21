@@ -24,6 +24,8 @@ The utam-preview module is an example of page objects authoring and compilation.
 
 __IMPORTANT: Page objects and tests for the Salesforce UI are compatible with application version 236 (Spring '22)__.
 
+> Note: These recipes are designed to work with a generic Salesforce org. If your org has customizations, you might need to modify page objects or tests locally to avoid errors.
+
 To generate page objects, run this maven command from the project root:
 ```shell script
 mvn clean install
