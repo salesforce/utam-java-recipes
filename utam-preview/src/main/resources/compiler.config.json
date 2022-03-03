@@ -1,4 +1,5 @@
 {
+  "module": "preview",
   "pageObjectsRootDir": "/src/main/resources/spec",
   "pageObjectsFilesMask": "(.*)\\.utam\\.json$",
   "pageObjectsOutputDir": "/src/main/java",
