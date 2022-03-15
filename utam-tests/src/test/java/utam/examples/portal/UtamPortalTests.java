@@ -45,7 +45,7 @@ public class UtamPortalTests extends UtamWebTestBase {
   @Test
   public void testMenuGrammarLink() {
     UtamDevHome homePage = navigateToPortalHome();
-    Assert.assertEquals(homePage.getMenuItems().size(), 3, "number of menu items");
+    Assert.assertEquals(homePage.getMenuItems().size(), 4, "number of menu items");
     homePage.getGrammarMenuItem().click();
     Assert.assertEquals(getDomDocument().getUrl(), "https://utam.dev/grammar/spec");
   }
