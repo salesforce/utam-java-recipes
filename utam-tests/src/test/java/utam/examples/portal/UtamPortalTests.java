@@ -7,6 +7,8 @@
  */
 package utam.examples.portal;
 
+import static org.testng.Assert.expectThrows;
+
 import org.openqa.selenium.StaleElementReferenceException;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
@@ -111,7 +113,7 @@ public class UtamPortalTests extends UtamWebTestBase {
     assert !pageContent.isPresent();
 
     log("Attempt to find element inside stale root is throwing 'The element reference is stale'");
-    Assert.expectThrows(StaleElementReferenceException.class, () -> homePage.getContent());
+    expectThrows(StaleElementReferenceException.class, homePage::getContent);
 
     log("Reload the root to invoke Driver.findElement");
     UtamDevHome homePageReloaded = from(UtamDevHome.class);

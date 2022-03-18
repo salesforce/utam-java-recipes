@@ -18,6 +18,21 @@ mvn clean install
 
 2. Import this project as a Maven project in the IDE of your choice.
 
+## Dependency from Salesforce page objects
+
+In the main pom.xml of this project you will notice dependency from Salesforce page objects:
+```xml
+<dependency>
+    <groupId>com.salesforce.utam</groupId>
+    <artifactId>salesforce-pageobjects</artifactId>
+    <version>${salesforce.pageobjects.version}</version>
+</dependency>
+```
+
+Dependency version should match the Salesforce application version that is deployed on the environment under test. 
+In this repository version will always be pointing to the latest released Saleforce application deployed on production.
+If test environment is not yet updated, please find matching version in [maven central](https://mvnrepository.com/artifact/com.salesforce.utam/salesforce-pageobjects)
+
 ## Generate Page Objects
 
 The utam-preview module is an example of page objects authoring and compilation. This module also contains Salesforce page objects for default org setup that can be used to build Salesforce UI tests.

@@ -8,7 +8,8 @@
 package utam.examples.salesforce.web;
 
 import utam.base.UtamWebTestBase;
-import utam.tests.pageobjects.Login;
+import utam.core.driver.Document;
+import utam.helpers.pageobjects.Login;
 import utam.utils.salesforce.TestEnvironment;
 
 /**
@@ -36,6 +37,8 @@ abstract class SalesforceWebTestBase extends UtamWebTestBase {
         String.format(
             "Enter username '%s' and password, wait for landing page Url containing '%s'",
             userName, landingPagePartialUrl));
-    loginPage.loginToHomePage(userName, testEnvironment.getPassword(), landingPagePartialUrl);
+    loginPage.login(userName, testEnvironment.getPassword());
+    Document document = getDomDocument();
+    document.waitFor(() -> document.getUrl().contains(landingPagePartialUrl));
   }
 }

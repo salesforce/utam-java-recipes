@@ -16,6 +16,10 @@
       <groupId>com.salesforce.utam</groupId>
       <artifactId>utam-core</artifactId>
     </dependency>
+    <dependency>
+      <groupId>com.salesforce.utam</groupId>
+      <artifactId>salesforce-pageobjects</artifactId>
+    </dependency>
   </dependencies>
 
   <build>

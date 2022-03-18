@@ -19,36 +19,8 @@
   ],
   "namespaces": [
     {
-      "typeMatch": "utam-lightning",
-      "pathMatch": ".*/lightning"
-    },
-    {
-      "typeMatch": "utam-force",
-      "pathMatch": ".*/force"
-    },
-    {
       "typeMatch": "utam-tests",
       "pathMatch": ".*/tests"
-    },
-    {
-      "typeMatch": "utam-global",
-      "pathMatch": ".*/one"
-    },
-    {
-      "typeMatch": "utam-record-flexipage",
-      "pathMatch": ".*/record_flexipage"
-    },
-    {
-      "typeMatch": "utam-flexipage",
-      "pathMatch": ".*/flexipage"
-    },
-    {
-      "typeMatch": "utam-records",
-      "pathMatch": ".*/records"
-    },
-    {
-      "typeMatch": "utam-action",
-      "pathMatch": ".*/runtime_platform_actions"
     },
     {
       "typeMatch": "utam-salesforceapp",
@@ -57,10 +29,6 @@
     {
       "typeMatch": "utam-sfdx",
       "pathMatch": ".*/force-app"
-    },
-    {
-      "typeMatch": "utam-sfa",
-      "pathMatch": ".*/sfa"
     },
     {
       "typeMatch": "utam-portal",

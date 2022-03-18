@@ -7,6 +7,8 @@
  */
 package utam.examples.salesforce.web;
 
+import static utam.examples.salesforce.RecordTestUtils.getDatepicker;
+
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -103,7 +105,7 @@ public class RecordCreationTests extends SalesforceWebTestBase {
 
     log("Enter 'Close date' as 01/01/2020");
     RecordLayoutItem closeDateItem = recordLayout.getItem(1, 1, 2);
-    closeDateItem.getDatepicker().setDateText("01/01/2020");
+    getDatepicker(closeDateItem).setDateText("01/01/2020");
 
     log("Pick first option in a 'Stage' combobox");
     RecordLayoutItem stageItem = recordLayout.getItem(1, 2, 2);
