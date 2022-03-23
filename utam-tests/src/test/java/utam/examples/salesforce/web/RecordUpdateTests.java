@@ -15,6 +15,7 @@ import org.testng.annotations.Test;
 import utam.flexipage.pageobjects.Tab2;
 import utam.global.pageobjects.RecordActionWrapper;
 import utam.global.pageobjects.RecordHomeFlexipage2;
+import utam.lightning.pageobjects.Datatable;
 import utam.lightning.pageobjects.FormattedName;
 import utam.lightning.pageobjects.TabBar;
 import utam.lightning.pageobjects.Tabset;
@@ -40,6 +41,17 @@ import java.util.Date;
  * @since Dec 2021
  */
 public class RecordUpdateTests extends SalesforceWebTestBase {
+
+  static void scrollToRow(Datatable table, int rowIndex) {
+    int firstRowNumber = Integer.valueOf(table.getFirstRowNumber());
+    int lastRowNumber = Integer.valueOf(table.getLastRowNumber());
+    while(rowIndex < firstRowNumber) {
+        firstRowNumber = Integer.valueOf(table.scrollFirstRow());
+    }
+    while(rowIndex < lastRowNumber) {
+      lastRowNumber = Integer.valueOf(table.getLastRowNumber());
+    }
+  }
 
   final TestEnvironment testEnvironment = getTestEnvironment("sandbox");
 

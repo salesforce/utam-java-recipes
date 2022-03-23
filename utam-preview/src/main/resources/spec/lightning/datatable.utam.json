@@ -1,0 +1,84 @@
+{
+  "root": true,
+  "selector": {
+    "css": "data-table"
+  },
+  "elements": [
+    {
+      "name": "firstRenderedRow",
+      "public": true,
+      "type": [
+        "actionable"
+      ],
+      "selector": {
+        "css": "[data-row-number]:first-child"
+      }
+    },
+    {
+      "name": "lastRenderedRow",
+      "public": true,
+      "type": [
+        "actionable"
+      ],
+      "selector": {
+        "css": "[data-row-number]:last-child"
+      }
+    }
+  ],
+  "methods": [
+    {
+      "name": "getFirstRowNumber",
+      "compose": [
+        {
+          "element": "firstRenderedRow",
+          "apply": "getAttribute",
+          "args": [
+            {
+              "value": "data-row-number"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "scrollFirstRow",
+      "compose": [
+        {
+          "element": "firstRenderedRow",
+          "apply" : "scrollToCenter"
+        },
+        {
+          "returnType": "string",
+          "apply": "getFirstRowNumber"
+        }
+      ]
+    },
+    {
+      "name": "getLastRowNumber",
+      "compose": [
+        {
+          "element": "lastRenderedRow",
+          "apply": "getAttribute",
+          "args": [
+            {
+              "value": "data-row-number"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "scrollLastRow",
+      "compose": [
+        {
+          "element": "lastRenderedRow",
+          "apply" : "scrollToCenter"
+        },
+        {
+          "returnType": "string",
+          "apply": "getLastRowNumber"
+        }
+      ]
+    }
+  ]
+}
