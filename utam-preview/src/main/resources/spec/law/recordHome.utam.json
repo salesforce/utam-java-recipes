@@ -1,0 +1,10 @@
+{
+  "root": true,
+  "interface": true,
+  "methods": [
+    {
+      "name": "getHighlights",
+      "returnType": "utam-records/pageObjects/lwcHighlightsPanel"
+    }
+  ]
+}

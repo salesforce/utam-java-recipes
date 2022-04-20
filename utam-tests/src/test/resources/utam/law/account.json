@@ -1,0 +1,13 @@
+{
+  "fields": [
+    {
+      "item": [
+        1,
+        1,
+        1
+      ],
+      "value": "randomString",
+      "type": "inputName"
+    }
+  ]
+}

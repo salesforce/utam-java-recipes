@@ -15,6 +15,15 @@
         "android_phone",
         "android_tablet"
       ]
+    },
+    {
+      "name": "entity",
+      "values": [
+        "account",
+        "contact",
+        "lead",
+        "opportunity"
+      ]
     }
   ],
   "namespaces": [
@@ -33,6 +42,10 @@
     {
       "typeMatch": "utam-portal",
       "pathMatch": ".*/portal"
+    },
+    {
+      "typeMatch": "utam-law",
+      "pathMatch": ".*/law"
     }
   ]
 }

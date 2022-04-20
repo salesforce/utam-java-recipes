@@ -1,0 +1,19 @@
+{
+  "implements":"utam-law/pageObjects/recordHome",
+  "profile": [
+    {
+      "entity": [
+        "lead",
+        "contact"
+      ]
+    }
+  ],
+  "elements" : {
+    "name" : "highlights",
+    "public" : true,
+    "type" : "utam-records/pageObjects/lwcHighlightsPanel",
+    "selector" : {
+      "css" : "css"
+    }
+  }
+}

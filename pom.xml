@@ -23,10 +23,10 @@
   <dependencyManagement>
     <dependencies>
       <dependency>
-        <groupId>com.salesforce.utam</groupId>
-        <artifactId>utam-core</artifactId>
-        <version>${utam.framework.version}</version>
-      </dependency>
+      <groupId>com.salesforce.utam</groupId>
+      <artifactId>utam-core</artifactId>
+      <version>${utam.framework.version}</version>
+    </dependency>
       <dependency>
         <groupId>com.salesforce.utam</groupId>
         <artifactId>salesforce-pageobjects</artifactId>
