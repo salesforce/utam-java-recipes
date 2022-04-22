@@ -1,19 +1,19 @@
 {
   "modules": [
-	{
-		 "name": "utam-salesforceapp-pageobjects",
-		 "profiles": [
-			{
-				"name": "platform",
-				"values": [
-					"android_phone",
-					"ios_phone"
-				]
-			}
-		]
-	}
+    {
+      "name": "utam-salesforceapp-pageobjects",
+      "profiles": [
+        {
+          "name": "platform",
+          "values": [
+            "android_phone",
+            "ios_phone"
+          ]
+        }
+      ]
+    }
   ],
-  "timeouts" : {
-    "explicitTimeout" : 60000
+  "timeouts": {
+    "explicitTimeout": 60000
   }
 }
