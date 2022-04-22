@@ -23,7 +23,7 @@ import java.util.Set;
  * <p>Only 3 properties are required to use login via UI method. When creating instance of this
  * class, pass environment name prefix as parameter to constructor: new TestEnvironment("sandbox")
  *
- * @since 236
+ * @since 2021
  * @author salesforce
  */
 public class TestEnvironment {

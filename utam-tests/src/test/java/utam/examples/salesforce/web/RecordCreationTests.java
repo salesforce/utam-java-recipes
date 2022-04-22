@@ -23,16 +23,16 @@ import utam.utils.salesforce.RecordType;
 import utam.utils.salesforce.TestEnvironment;
 
 /**
- * IMPORTANT: Page objects and tests for Salesforce UI are compatible with application version 236.
- * Test environment is private SF sandbox, not available for external users and has DEFAULT org
- * setup
+ * IMPORTANT: Page objects and tests for Salesforce UI are compatible with the application version
+ * mentioned in published page objects Test environment is private SF sandbox, not available for
+ * external users and has DEFAULT org setup
  *
  * @author Salesforce
  * @since Dec 2021
  */
 public class RecordCreationTests extends SalesforceWebTestBase {
 
-  final TestEnvironment testEnvironment = getTestEnvironment("sandbox");
+  private final TestEnvironment testEnvironment = getTestEnvironment("sandbox");
 
   @BeforeTest
   public void setup() {

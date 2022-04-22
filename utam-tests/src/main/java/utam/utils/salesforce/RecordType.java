@@ -11,7 +11,7 @@ package utam.utils.salesforce;
  * Helper class with standard Salesforce records types
  *
  * @author salesforce
- * @since 236
+ * @since 2021
  */
 public enum RecordType {
   Account,

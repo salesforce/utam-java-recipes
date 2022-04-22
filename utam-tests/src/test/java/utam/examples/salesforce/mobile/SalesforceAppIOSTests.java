@@ -11,11 +11,11 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import utam.base.UtamMobileTestBase;
+import utam.helpers.pageobjects.Login;
 import utam.salesforceapp.pageobjects.authentication.AddConn;
 import utam.salesforceapp.pageobjects.authentication.ChooseConn;
 import utam.salesforceapp.pageobjects.authentication.Eula;
 import utam.salesforceapp.pageobjects.authentication.LoginNavBar;
-import utam.tests.pageobjects.Login;
 
 public class SalesforceAppIOSTests extends UtamMobileTestBase {
 
