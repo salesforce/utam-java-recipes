@@ -1,22 +1,64 @@
 {
-  "fields": [
-    {
-      "item": [
-        1,
-        1,
-        1
-      ],
-      "value": "randomString",
-      "type": "inputName"
-    },
-    {
-      "item": [
-        1,
-        1,
-        2
-      ],
-      "value": "01/01/2020",
-      "type": "datepicker"
-    }
-  ]
+  "create": {
+    "fields": [
+      {
+        "highlightsIndex": 1,
+        "itemIndex": [
+          1,
+          1,
+          2
+        ],
+        "fieldType": "datePicker",
+        "args": [
+          {
+            "type": "date",
+            "value": "random"
+          }
+        ]
+      },
+      {
+        "itemIndex": [
+          1,
+          2,
+          2
+        ],
+        "fieldType": "pickList",
+        "args": [
+          {
+            "type": "number",
+            "value": 2
+          }
+        ]
+      },
+      {
+        "itemIndex": [
+          1,
+          3,
+          1
+        ],
+        "fieldType": "lookup",
+        "args": [
+          {
+            "type": "number",
+            "value": 1
+          }
+        ]
+      },
+      {
+        "isPrimary" : true,
+        "itemIndex": [
+          1,
+          2,
+          1
+        ],
+        "fieldType": "inputName",
+        "args": [
+          {
+            "type" : "string",
+            "value": "random"
+          }
+        ]
+      }
+    ]
+  }
 }

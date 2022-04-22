@@ -5,6 +5,10 @@
     {
       "name": "getHighlights",
       "returnType": "utam-records/pageObjects/lwcHighlightsPanel"
+    },
+    {
+      "name": "getTabset",
+      "returnType": "utam-lightning/pageObjects/tabset"
     }
   ]
 }

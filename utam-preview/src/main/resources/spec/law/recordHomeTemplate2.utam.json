@@ -1,5 +1,5 @@
 {
-  "implements":"utam-law/pageObjects/recordHome",
+  "implements": "utam-law/pageObjects/recordHome",
   "profile": [
     {
       "entity": [
@@ -8,12 +8,22 @@
       ]
     }
   ],
-  "elements" : {
-    "name" : "highlights",
-    "public" : true,
-    "type" : "utam-records/pageObjects/lwcHighlightsPanel",
-    "selector" : {
-      "css" : "css"
+  "elements": [
+    {
+      "name": "highlights",
+      "public": true,
+      "type": "utam-records/pageObjects/lwcHighlightsPanel",
+      "selector": {
+        "css": "css"
+      }
+    },
+    {
+      "type": "utam-lightning/pageObjects/tabset",
+      "name": "tabset",
+      "public": true,
+      "selector": {
+        "css": "lightning-tabset"
+      }
     }
-  }
+  ]
 }

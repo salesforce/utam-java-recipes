@@ -9,12 +9,15 @@ import java.util.ArrayList;
 import java.util.List;
 import org.testng.annotations.DataProvider;
 import utam.core.framework.context.Profile;
-import utam.law.pageobjects.RecordLayout;
+import utam.law.LAWRecordsUtils.FieldType;
+import utam.records.pageobjects.Highlights2;
+import utam.records.pageobjects.LwcRecordLayout;
 import utam.records.pageobjects.RecordLayoutItem;
 
 public class LAWDataProvider {
 
   private static final String JSON_FILE_RESOURCE_NAME = "utam/law/%s.json";
+  private static final String RANDOM = "random";
 
   private static URL getJsonDataUrl(EntityType entityType) {
     String fileName = String.format(JSON_FILE_RESOURCE_NAME, entityType.getValue());
@@ -37,7 +40,7 @@ public class LAWDataProvider {
       if (url != null) {
         Data entityData = readJsonData(url);
         entityData.entityType = entityType;
-        data.add(readJsonData(url));
+        data.add(entityData);
       }
     }
     return data.toArray();
@@ -60,28 +63,39 @@ public class LAWDataProvider {
     }
   }
 
-  enum FieldType {
-    datepicker,
-    inputName;
+  enum ArgsType {
+    date,
+    string,
+    number;
 
-    void setField(RecordLayoutItem item, String value) {
-      if (this == datepicker) {
-        item.getDatepicker().setDateText(value);
-      } else if (this == inputName) {
-        item.getTextInput().setText(value);
+    Object getEntryValue(Object value) {
+      if (this == string) {
+        if (RANDOM.equals(value)) {
+          return "name" + Math.random();
+        }
+        return value.toString();
+      } else if (this == number) {
+        if (RANDOM.equals(value)) {
+          return (Integer) 1000 * Math.random() / 100;
+        }
+        return Integer.valueOf(value.toString());
+      } else if (this == date) {
+        if (RANDOM.equals(value)) {
+          return "01/01/2020";
+        }
       }
-      throw new AssertionError("todo");
+      return value.toString();
     }
   }
 
   static class Data {
 
+    final CreateData createData;
     EntityType entityType;
-    final List<Field> fields;
 
     @JsonCreator
-    Data(@JsonProperty("fields") List<Field> fields) {
-      this.fields = fields;
+    Data(@JsonProperty("create") CreateData createData) {
+      this.createData = createData;
     }
 
     String createRecordViaAPI() {
@@ -89,33 +103,76 @@ public class LAWDataProvider {
     }
   }
 
-  /*
-  "fields" : [
-      {
-        "item" : [ 1, 1, 1 ],
-        "value" : "01/01/2020",
-        "type" : "datepicker"
-      }
-   */
+  static class CreateData {
+
+    final List<Field> fields;
+
+    @JsonCreator
+    CreateData(@JsonProperty("fields") List<Field> fields) {
+      this.fields = fields;
+    }
+
+    String getPrimaryField() {
+      Field field = this.fields.stream().filter(Field::isPrimary).findFirst().orElseThrow();
+      return field.values[0].toString();
+    }
+  }
+
   static class Field {
 
     private final List<Integer> items;
-    private final String value;
+    private final Object[] values;
     private final FieldType type;
+    private final boolean isPrimary;
+    private final int highlightsIndex;
 
     @JsonCreator
     public Field(
-        @JsonProperty("item") List<Integer> item,
-        @JsonProperty("value") String value,
-        @JsonProperty("type") FieldType type) {
+        @JsonProperty(value = "highlightsIndex") Integer highlightsIndex,
+        @JsonProperty(value = "isPrimary") boolean isPrimary,
+        @JsonProperty(value = "itemIndex", required = true) List<Integer> item,
+        @JsonProperty(value = "fieldType", required = true) FieldType type,
+        @JsonProperty(value = "args", required = true) List<Args> values) {
       this.items = item;
-      this.value = value;
       this.type = type;
+      this.values = values.stream().map(arg -> arg.value).toArray();
+      this.isPrimary = isPrimary;
+      this.highlightsIndex = highlightsIndex == null ? -1 : highlightsIndex;
     }
 
-    void setValue(RecordLayout recordLayout) {
+    boolean isPrimary() {
+      return this.isPrimary;
+    }
+
+    void setValue(LwcRecordLayout recordLayout) {
       RecordLayoutItem item = recordLayout.getItem(items.get(0), items.get(1), items.get(2));
-      type.setField(item, value);
+      type.setValue(item, values);
+    }
+
+    void assertDetailsPanelValue(LwcRecordLayout recordLayout) {
+      RecordLayoutItem item = recordLayout.getItem(items.get(0), items.get(1), items.get(2));
+      Object actual = type.getValue(item);
+      assert actual.equals(values[0]);
+    }
+
+    void assertHighlightsValue(Highlights2 highlights) {
+      if (highlightsIndex >= 0) {
+        String actualValue = highlights.getSecondaryFieldText(highlightsIndex);
+        String expectedValue = this.values[0].toString();
+        assert actualValue.equals(expectedValue);
+      }
+    }
+  }
+
+  static class Args {
+
+    private final Object value;
+
+    @JsonCreator
+    public Args(
+        @JsonProperty(value = "value", required = true) Object value,
+        @JsonProperty(value = "type", required = true) ArgsType type) {
+      this.value = type.getEntryValue(value);
     }
   }
 }
