@@ -23,10 +23,6 @@
       "pathMatch": ".*/tests"
     },
     {
-      "typeMatch": "utam-salesforceapp",
-      "pathMatch": ".*/mobile"
-    },
-    {
       "typeMatch": "utam-sfdx",
       "pathMatch": ".*/force-app"
     },

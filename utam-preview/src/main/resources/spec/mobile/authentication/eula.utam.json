@@ -1,9 +1,0 @@
-{
-  "root": true,
-  "interface": true,
-  "methods": [
-    {
-      "name": "accept"
-    }
-  ]
-}

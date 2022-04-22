@@ -53,7 +53,7 @@ public abstract class UtamMobileTestBase {
   }
 
   private void setLoaderConfig() {
-    config = new UtamLoaderConfigImpl("loader.config.json");
+    config = new UtamLoaderConfigImpl("utam-salesforceapp-pageobjects.config.json");
     config.setProfile(MobilePlatformType.fromDriver(driver));
     loader = new UtamLoaderImpl(config, driver);
   }
