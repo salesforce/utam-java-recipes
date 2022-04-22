@@ -33,6 +33,28 @@ Dependency version should match the Salesforce application version that is deplo
 In this repository version will always be pointing to the latest released Saleforce application deployed on production.
 If test environment is not yet updated, please find matching version in [maven central](https://mvnrepository.com/artifact/com.salesforce.utam/salesforce-pageobjects)
 
+## Dependency from UTAM framework
+
+In the main pom.xml of this project you will notice dependency from utam-core, version should be latest 
+and compatible with Salesforce page objects artifact (see previous section) if your tests use it:
+```xml
+<dependency>
+   <groupId>com.salesforce.utam</groupId>
+   <artifactId>utam-core</artifactId>
+   <version>${utam.framework.version}</version>
+</dependency>
+```
+utam-preview module has dependency from UTAM compiler, version should be same as for utam-core:
+```xml
+<dependency>
+    <groupId>com.salesforce.utam</groupId>
+    <artifactId>utam-compiler</artifactId>
+    <version>${utam.framework.version}</version>
+    <scope>runtime</scope>
+    <type>jar</type>
+</dependency>
+```
+
 ## Generate Page Objects
 
 The utam-preview module is an example of page objects authoring and compilation. This module also contains Salesforce page objects for default org setup that can be used to build Salesforce UI tests.
