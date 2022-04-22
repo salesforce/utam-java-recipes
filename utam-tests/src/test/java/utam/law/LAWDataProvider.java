@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 import org.testng.annotations.DataProvider;
 import utam.core.framework.context.Profile;
-import utam.law.LAWRecordsUtils.FieldType;
 import utam.records.pageobjects.Highlights2;
 import utam.records.pageobjects.LwcRecordLayout;
 import utam.records.pageobjects.RecordLayoutItem;
@@ -122,7 +121,7 @@ public class LAWDataProvider {
 
     private final List<Integer> items;
     private final Object[] values;
-    private final FieldType type;
+    private final RecordField type;
     private final boolean isPrimary;
     private final int highlightsIndex;
 
@@ -131,7 +130,7 @@ public class LAWDataProvider {
         @JsonProperty(value = "highlightsIndex") Integer highlightsIndex,
         @JsonProperty(value = "isPrimary") boolean isPrimary,
         @JsonProperty(value = "itemIndex", required = true) List<Integer> item,
-        @JsonProperty(value = "fieldType", required = true) FieldType type,
+        @JsonProperty(value = "fieldType", required = true) RecordField type,
         @JsonProperty(value = "args", required = true) List<Args> values) {
       this.items = item;
       this.type = type;

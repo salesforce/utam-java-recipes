@@ -86,9 +86,12 @@ public class LAWRecordsTests extends UtamWebTestBase {
     LwcHighlightsPanel highlightsPanel = recordHome.getHighlights();
     // todo - replace by methods
     Highlights2 highlights2 = new Highlights2Impl();
+
+    /*
     String actualValue = highlights2.getPrimaryFieldText().getText();
     String expectedValue = data.getPrimaryField();
     assert expectedValue.equals(actualValue);
+     */
 
     for (Field field : data.fields) {
       field.assertHighlightsValue(highlights2);
@@ -101,7 +104,7 @@ public class LAWRecordsTests extends UtamWebTestBase {
    * method testCreateSaveAndNew
    */
   @Test
-  public void testCreateRecord() {
+  public void test() {
     LwcRecordLayout recordLayout = openNewRecordModal();
 
     // set all fields and save
