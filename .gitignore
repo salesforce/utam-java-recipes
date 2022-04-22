@@ -38,3 +38,7 @@ log.out
 
 # scratch org
 .sfdx
+
+**/test-output/
+**/.classpath
+**/.settings
