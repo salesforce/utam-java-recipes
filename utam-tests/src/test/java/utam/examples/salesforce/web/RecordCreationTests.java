@@ -7,8 +7,6 @@
  */
 package utam.examples.salesforce.web;
 
-import static utam.examples.salesforce.RecordTestUtils.getDatepicker;
-
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -25,16 +23,16 @@ import utam.utils.salesforce.RecordType;
 import utam.utils.salesforce.TestEnvironment;
 
 /**
- * IMPORTANT: Page objects and tests for Salesforce UI are compatible with application version 236.
- * Test environment is private SF sandbox, not available for external users and has DEFAULT org
- * setup
+ * IMPORTANT: Page objects and tests for Salesforce UI are compatible with the application version
+ * mentioned in published page objects Test environment is private SF sandbox, not available for
+ * external users and has DEFAULT org setup
  *
  * @author Salesforce
  * @since Dec 2021
  */
 public class RecordCreationTests extends SalesforceWebTestBase {
 
-  final TestEnvironment testEnvironment = getTestEnvironment("sandbox");
+  private final TestEnvironment testEnvironment = getTestEnvironment("sandbox");
 
   @BeforeTest
   public void setup() {
@@ -105,7 +103,7 @@ public class RecordCreationTests extends SalesforceWebTestBase {
 
     log("Enter 'Close date' as 01/01/2020");
     RecordLayoutItem closeDateItem = recordLayout.getItem(1, 1, 2);
-    getDatepicker(closeDateItem).setDateText("01/01/2020");
+    closeDateItem.getDatepicker().setDateText("01/01/2020");
 
     log("Pick first option in a 'Stage' combobox");
     RecordLayoutItem stageItem = recordLayout.getItem(1, 2, 2);

@@ -8,9 +8,6 @@
 package utam.examples.salesforce.web;
 
 import static org.testng.Assert.assertEquals;
-import static utam.examples.salesforce.RecordTestUtils.getHighlightsPanel;
-import static utam.examples.salesforce.RecordTestUtils.getHighlightsPanelWithSubheader;
-import static utam.examples.salesforce.RecordTestUtils.getTabset;
 
 import java.text.DateFormat;
 import java.util.Calendar;
@@ -31,16 +28,16 @@ import utam.utils.salesforce.RecordType;
 import utam.utils.salesforce.TestEnvironment;
 
 /**
- * IMPORTANT: Page objects and tests for Salesforce UI are compatible with application version 236.
- * Test environment is private SF sandbox, not available for external users and has DEFAULT org
- * setup
+ * IMPORTANT: Page objects and tests for Salesforce UI are compatible with application version
+ * mentioned in published page objects. Test environment is private SF sandbox, not available for
+ * external users and has DEFAULT org setup
  *
  * @author Salesforce
  * @since Dec 2021
  */
 public class RecordUpdateTests extends SalesforceWebTestBase {
 
-  final TestEnvironment testEnvironment = getTestEnvironment("sandbox");
+  private final TestEnvironment testEnvironment = getTestEnvironment("sandbox");
 
   @BeforeTest
   public void setup() {
@@ -65,7 +62,7 @@ public class RecordUpdateTests extends SalesforceWebTestBase {
     RecordHomeFlexipage2 recordHome = from(RecordHomeFlexipage2.class);
 
     log("Access Record Highlights panel");
-    LwcHighlightsPanel highlightsPanel = getHighlightsPanel(recordHome);
+    LwcHighlightsPanel highlightsPanel = recordHome.getHighlights();
 
     log("Wait for button 'Edit' and click on it");
     highlightsPanel.getActions().getActionRendererWithTitle("Edit").clickButton();
@@ -94,7 +91,7 @@ public class RecordUpdateTests extends SalesforceWebTestBase {
     gotoRecordHomeByUrl(RecordType.Contact, recordId);
 
     RecordHomeFlexipage2 recordHome = from(RecordHomeFlexipage2.class);
-    Tabset tabset = getTabset(recordHome);
+    Tabset tabset = recordHome.getTabset();
 
     log("Select 'Details' tab");
     TabBar tabBar = tabset.getTabBar();
@@ -141,7 +138,8 @@ public class RecordUpdateTests extends SalesforceWebTestBase {
     RecordHomeFlexipage2 recordHome = from(RecordHomeFlexipage2.class);
 
     log("Access Lead Highlights panel");
-    LwcHighlightsPanel highlightsPanel = getHighlightsPanelWithSubheader(recordHome);
+    LwcHighlightsPanel highlightsPanel =
+        recordHome.getRecordHomeTemplateDesktopWithSubheader().getHighlights();
 
     log("Wait for button 'Edit' and click on it");
     highlightsPanel.getActions().getActionRendererWithTitle("Edit").clickButton();

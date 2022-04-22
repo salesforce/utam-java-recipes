@@ -27,7 +27,7 @@ abstract class SalesforceWebTestBase extends UtamWebTestBase {
    * @param testEnvironment environment information
    * @param landingPagePartialUrl after login, this is partial url that we land in
    */
-  public final void login(TestEnvironment testEnvironment, String landingPagePartialUrl) {
+  final void login(TestEnvironment testEnvironment, String landingPagePartialUrl) {
     final String baseUrl = testEnvironment.getBaseUrl();
     final String userName = testEnvironment.getUserName();
     log("Navigate to login URL: " + baseUrl);
