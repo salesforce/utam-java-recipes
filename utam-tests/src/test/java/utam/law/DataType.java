@@ -3,18 +3,18 @@ package utam.law;
 import utam.lightning.pageobjects.BaseCombobox;
 import utam.records.pageobjects.RecordLayoutItem;
 
-enum RecordField {
-  datePicker,
-  inputName,
+enum DataType {
+  date,
+  text,
   lookup,
-  pickList;
+  picklist;
 
   void setValue(RecordLayoutItem item, Object[] value) {
-    if (this == datePicker) {
+    if (this == date) {
       item.getDatepicker().setDateText((String) value[0]);
-    } else if (this == inputName) {
+    } else if (this == text) {
       item.getTextInput().setText((String) value[0]);
-    } else if (this == pickList) {
+    } else if (this == picklist) {
       BaseCombobox picklist = item.getStageNamePicklist().getBaseCombobox();
       picklist.expandForDisabledInput();
       picklist.pickItem((Integer) value[0]);
@@ -28,11 +28,11 @@ enum RecordField {
   }
 
   Object getValue(RecordLayoutItem item) {
-    if (this == datePicker) {
+    if (this == date) {
       return item.getDatepicker().getDateText();
-    } else if (this == inputName) {
+    } else if (this == text) {
       return item.getTextInput().getValueText();
-    } else if (this == pickList) {
+    } else if (this == picklist) {
       // todo
     } else if (this == lookup) {
       // todo

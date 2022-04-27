@@ -121,7 +121,7 @@ public class LAWDataProvider {
 
     private final List<Integer> items;
     private final Object[] values;
-    private final RecordField type;
+    private final DataType type;
     private final boolean isPrimary;
     private final int highlightsIndex;
 
@@ -130,7 +130,7 @@ public class LAWDataProvider {
         @JsonProperty(value = "highlightsIndex") Integer highlightsIndex,
         @JsonProperty(value = "isPrimary") boolean isPrimary,
         @JsonProperty(value = "itemIndex", required = true) List<Integer> item,
-        @JsonProperty(value = "fieldType", required = true) RecordField type,
+        @JsonProperty(value = "dataType", required = true) DataType type,
         @JsonProperty(value = "args", required = true) List<Args> values) {
       this.items = item;
       this.type = type;

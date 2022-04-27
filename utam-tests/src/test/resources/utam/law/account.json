@@ -8,7 +8,7 @@
           1,
           1
         ],
-        "fieldType": "inputName",
+        "dataType": "text",
         "args": [
           {
             "type": "string",

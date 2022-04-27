@@ -2,13 +2,20 @@
   "create": {
     "fields": [
       {
+        "isPrimary" : true,
+        "itemIndex": [1, 2, 1],
+        "dataType": "text",
+        "args": [
+          {
+            "type" : "string",
+            "value": "random"
+          }
+        ]
+      },
+      {
         "highlightsIndex": 1,
-        "itemIndex": [
-          1,
-          1,
-          2
-        ],
-        "fieldType": "datePicker",
+        "itemIndex": [1, 1, 2],
+        "dataType": "date",
         "args": [
           {
             "type": "date",
@@ -22,7 +29,7 @@
           2,
           2
         ],
-        "fieldType": "pickList",
+        "dataType": "picklist",
         "args": [
           {
             "type": "number",
@@ -36,26 +43,11 @@
           3,
           1
         ],
-        "fieldType": "lookup",
+        "dataType": "lookup",
         "args": [
           {
             "type": "number",
             "value": 1
-          }
-        ]
-      },
-      {
-        "isPrimary" : true,
-        "itemIndex": [
-          1,
-          2,
-          1
-        ],
-        "fieldType": "inputName",
-        "args": [
-          {
-            "type" : "string",
-            "value": "random"
           }
         ]
       }

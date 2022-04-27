@@ -24,6 +24,19 @@
       "selector": {
         "css": "lightning-tabset"
       }
+    },
+    {
+      "name" : "basicHTML",
+      "public": true,
+      "selector": {
+        "css": "%s",
+        "args" : [
+          {
+            "type" : "string",
+            "name" : "cssSelectorString"
+          }
+        ]
+      }
     }
   ]
 }
