@@ -70,7 +70,7 @@ public abstract class UtamMobileTestBase {
     setupMobile();
     System.setProperty("ios.device", "iPhone 8 Plus");
     System.setProperty("ios.app", getUserHomeRelativePath("SApp.app"));
-    desiredCapabilities.setDesiredCapability(MobileCapabilityType.PLATFORM_VERSION, "13.4");
+    desiredCapabilities.setDesiredCapability(MobileCapabilityType.PLATFORM_VERSION, "15.2");
     driver = WebDriverFactory.getWebDriver(DriverType.ios, appiumService, desiredCapabilities);
     setLoaderConfig();
   }
