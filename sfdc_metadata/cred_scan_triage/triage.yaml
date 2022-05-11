@@ -1,0 +1,9 @@
+clean: true
+mock_secret:
+- id: utam-java-recipes://README.md_50203e027c8334339cea4070a6b5940230a08044
+  justification: example secret in documentation
+- id: utam-java-recipes://CONTRIBUTING.md_50203e027c8334339cea4070a6b5940230a08044
+  justification: example secret in documentation
+false_positive: []
+non_production_secret: []
+production_secret: []
