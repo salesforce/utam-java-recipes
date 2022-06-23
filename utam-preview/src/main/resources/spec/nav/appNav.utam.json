@@ -1,0 +1,28 @@
+{
+  "description": {
+    "text": [
+      "Selector: one-appnav.",
+      "Represents the one-appnav Lightning web component.",
+      "Access the app nav bar, app launcher header, or app name."
+    ]
+  },
+  "shadow": {
+    "elements": [
+      {
+        "name": "appNavBar",
+        "type": "utam-nav/pageObjects/appNavBar",
+        "public": true,
+        "selector": {
+          "css": "one-app-nav-bar"
+        }
+      },
+      {
+        "name": "appName",
+        "public": true,
+        "selector": {
+          "css": ".appName span"
+        }
+      }
+    ]
+  }
+}

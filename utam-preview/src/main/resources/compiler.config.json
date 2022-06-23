@@ -29,6 +29,10 @@
     {
       "typeMatch": "utam-portal",
       "pathMatch": ".*/portal"
+    },
+    {
+      "typeMatch": "utam-nav",
+      "pathMatch": ".*/nav"
     }
   ]
 }

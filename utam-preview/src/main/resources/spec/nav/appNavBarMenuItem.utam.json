@@ -1,0 +1,64 @@
+{
+  "description": {
+    "text": [
+      "Selector: one-app-nav-bar-menu-item.",
+      "Represents the one-app-nav-bar-menu-item Lightning web component.",
+      "Access the link or its inner text."
+    ]
+  },    
+  "methods" : [
+    {
+      "name" : "getInnerText",
+      "compose" : [
+        {
+          "apply": "getText",
+          "element": "link"
+        }
+      ]
+    },
+    {
+      "name": "clickAndWaitForUrl",
+      "compose": [
+        {
+          "element": "link",
+          "apply": "click"
+        },
+        {
+          "apply": "waitFor",
+          "args": [
+            {
+              "type": "function",
+              "predicate": [
+                {
+                  "element": "document",
+                  "apply": "getUrl",
+                  "matcher": {
+                    "type": "stringContains",
+                    "args": [
+                      {
+                        "type": "string",
+                        "name": "url"
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "shadow": {
+    "elements": [
+      {
+        "name": "link",
+        "type": ["clickable"],
+        "selector": {
+          "css": "a"
+        }
+      }
+    ]
+  }
+}
+

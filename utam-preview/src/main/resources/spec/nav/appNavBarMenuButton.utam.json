@@ -1,0 +1,56 @@
+{
+  "description": {
+    "text": [
+      "Selector: one-app-nav-bar-menu-button.",
+      "Represents the one-app-nav-bar-menu-button Lightning web component.",
+      "Access the expand button. Get a menu item by text."
+    ]
+  },
+  "shadow": {
+    "elements": [
+      {
+        "name": "expandBtn",
+        "public": true,
+        "type": [ "clickable" ],
+        "selector": {
+          "css": "a"
+        }
+      }
+    ]
+  },
+  "elements": [
+    {
+      "name": "menuItemByText",
+      "type": "utam-nav/pageObjects/appNavBarMenuItem",
+      "public": true,
+      "selector": {
+        "css": "one-app-nav-bar-menu-item",
+        "returnAll": true
+      },
+      "filter": {
+        "apply": "getInnerText",
+        "matcher": {
+          "type": "stringContains",
+          "args": [
+            {
+              "name" : "text",
+              "type" : "string"
+            }
+          ]
+        },
+        "findFirst": true
+      }
+    }
+  ],
+  "methods": [
+    {
+      "name": "expand",
+      "compose": [
+        {
+          "element": "expandBtn",
+          "apply": "click"
+        }
+      ]
+    }
+  ]
+}

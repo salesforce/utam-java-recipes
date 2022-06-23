@@ -1,0 +1,42 @@
+{
+  "description":{
+    "text":[
+      "Selector: .navexDesktopLayoutContainer",
+      "Represents the navex:DesktopLayoutContainer  aura component.",
+      "Get force:DockingPanel and one-appnav components"
+    ]
+  },
+  "root": true,
+  "selector": {
+    "css": ".navexDesktopLayoutContainer"
+  },
+  "elements": [
+    {
+      "name": "appNavPrivate",
+      "type": "utam-nav/pageObjects/appNav",
+      "selector": {
+        "css": "one-appnav"
+      }
+    }
+  ],
+  "methods" : [
+    {
+      "name" : "getAppNav",
+      "compose" : [
+        {
+          "apply" : "waitFor",
+          "args" : [
+            {
+              "type" : "function",
+              "predicate" : [
+                {
+                  "element" : "appNavPrivate"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
