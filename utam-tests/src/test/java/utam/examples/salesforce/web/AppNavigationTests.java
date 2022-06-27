@@ -12,10 +12,10 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import utam.force.pageobjects.ListViewManagerHeader;
+import utam.global.pageobjects.AppNavBar;
 import utam.global.pageobjects.ConsoleObjectHome;
 import utam.global.pageobjects.RecordActionWrapper;
-import utam.nav.pageobjects.AppNavBar;
-import utam.nav.pageobjects.DesktopLayoutContainer;
+import utam.navex.pageobjects.DesktopLayoutContainer;
 import utam.utils.salesforce.RecordType;
 import utam.utils.salesforce.TestEnvironment;
 
