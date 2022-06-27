@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021, salesforce.com, inc.
+ * Copyright (c) 2022, salesforce.com, inc.
  * All rights reserved.
  * SPDX-License-Identifier: MIT
  * For full license text, see the LICENSE file in the repo root
@@ -7,16 +7,11 @@
  */
 package utam.examples.salesforce.web;
 
-import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import utam.force.pageobjects.ListViewManagerHeader;
 import utam.global.pageobjects.AppNavBar;
-import utam.global.pageobjects.ConsoleObjectHome;
-import utam.global.pageobjects.RecordActionWrapper;
 import utam.navex.pageobjects.DesktopLayoutContainer;
-import utam.utils.salesforce.RecordType;
 import utam.utils.salesforce.TestEnvironment;
 
 /**
@@ -25,44 +20,44 @@ import utam.utils.salesforce.TestEnvironment;
  * external users and has DEFAULT org setup
  *
  * @author Salesforce
- * @since Dec 2021
+ * @since June 2022
  */
 public class AppNavigationTests extends SalesforceWebTestBase {
 
-    private final TestEnvironment testEnvironment = getTestEnvironment("sandbox");
+  private final TestEnvironment testEnvironment = getTestEnvironment("sandbox");
 
-    @BeforeTest
-    public void setup() {
-        setupChrome();
-        login(testEnvironment, "home");
-    }
+  @BeforeTest
+  public void setup() {
+    setupChrome();
+    login(testEnvironment, "home");
+  }
 
-    @Test
-    public void testNavigateToNanBarItem() {
-        getDriver().get(testEnvironment.getRedirectUrl());
-        log("Load Desktop layout container");
-        DesktopLayoutContainer layoutContainer = from(DesktopLayoutContainer.class);
+  @Test
+  public void testNavigateToNanBarItem() {
+    getDriver().get(testEnvironment.getRedirectUrl());
+    log("Load Desktop layout container");
+    DesktopLayoutContainer layoutContainer = from(DesktopLayoutContainer.class);
 
-        log("Navigate to nav bar item accounts");
-        AppNavBar navBar = layoutContainer.getAppNav().getAppNavBar();
-        navBar.getNavItem("Account").clickAndWaitForUrl("Account");
-    }
+    log("Navigate to nav bar item accounts");
+    AppNavBar navBar = layoutContainer.getAppNav().getAppNavBar();
+    navBar.getNavItem("Account").clickAndWaitForUrl("Account");
+  }
 
-    @Test
-    public void testNavigateToNanBarOverflowItem() {
-        getDriver().get(testEnvironment.getRedirectUrl());
-        log("Load Desktop layout container");
-        DesktopLayoutContainer layoutContainer = from(DesktopLayoutContainer.class);
+  @Test
+  public void testNavigateToNanBarOverflowItem() {
+    getDriver().get(testEnvironment.getRedirectUrl());
+    log("Load Desktop layout container");
+    DesktopLayoutContainer layoutContainer = from(DesktopLayoutContainer.class);
 
-        AppNavBar navBar = layoutContainer.getAppNav().getAppNavBar();
-        log("Navigate to overflow menu item");
-        navBar.getShowMoreMenuButton().expand();
-//    menu item with name 'Forecasts' should present in overflow items
-        navBar.getShowMoreMenuButton().getMenuItemByText("Forecasts").clickAndWaitForUrl("forecasting");
-    }
+    AppNavBar navBar = layoutContainer.getAppNav().getAppNavBar();
+    log("Navigate to overflow menu item");
+    navBar.getShowMoreMenuButton().expand();
+    // menu item with name 'Forecasts' should present in overflow items
+    navBar.getShowMoreMenuButton().getMenuItemByText("Forecasts").clickAndWaitForUrl("forecasting");
+  }
 
-    @AfterTest
-    public final void tearDown() {
-        quitDriver();
-    }
+  @AfterTest
+  public final void tearDown() {
+    quitDriver();
+  }
 }
