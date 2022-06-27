@@ -29,62 +29,40 @@ import utam.utils.salesforce.TestEnvironment;
  */
 public class AppNavigationTests extends SalesforceWebTestBase {
 
-  private final TestEnvironment testEnvironment = getTestEnvironment("sandbox");
+    private final TestEnvironment testEnvironment = getTestEnvironment("sandbox");
 
-  @BeforeTest
-  public void setup() {
-    setupChrome();
-    login(testEnvironment, "home");
-  }
+    @BeforeTest
+    public void setup() {
+        setupChrome();
+        login(testEnvironment, "home");
+    }
 
-  /**
-   * navigate to object home via URL and click New
-   *
-   * @param recordType record type affects navigation url
-   */
-  private void openRecordModal(RecordType recordType) {
+    @Test
+    public void testNavigateToNanBarItem() {
+        getDriver().get(testEnvironment.getRedirectUrl());
+        log("Load Desktop layout container");
+        DesktopLayoutContainer layoutContainer = from(DesktopLayoutContainer.class);
 
-    log("Navigate to an Object Home for " + recordType.name());
-    getDriver().get(recordType.getObjectHomeUrl(testEnvironment.getRedirectUrl()));
+        log("Navigate to nav bar item accounts");
+        AppNavBar navBar = layoutContainer.getAppNav().getAppNavBar();
+        navBar.getNavItem("Account").clickAndWaitForUrl("Account");
+    }
 
-    log("Load Accounts Object Home page");
-    ConsoleObjectHome objectHome = from(ConsoleObjectHome.class);
-    ListViewManagerHeader listViewHeader = objectHome.getListView().getHeader();
+    @Test
+    public void testNavigateToNanBarOverflowItem() {
+        getDriver().get(testEnvironment.getRedirectUrl());
+        log("Load Desktop layout container");
+        DesktopLayoutContainer layoutContainer = from(DesktopLayoutContainer.class);
 
-    log("List view header: click button 'New'");
-    listViewHeader.waitForAction("New").click();
-
-    log("Load Record Form Modal");
-    RecordActionWrapper recordFormModal = from(RecordActionWrapper.class);
-    Assert.assertTrue(recordFormModal.isPresent(), "record creation modal did not appear");
-  }
-
-  @Test
-  public void testNavigateToNanBarItem() {
-    getDriver().get(testEnvironment.getRedirectUrl());
-    log("Load Desktop layout container");
-    DesktopLayoutContainer layoutContainer = from(DesktopLayoutContainer.class);
-
-    log("Navigate to nav bar item accounts");
-    AppNavBar navBar= layoutContainer.getAppNav().getAppNavBar();
-    navBar.getNavItem("Account").clickAndWaitForUrl("Account");
-  }
-
-  @Test
-  public void testNavigateToNanBarOverflowItem() {
-    getDriver().get(testEnvironment.getRedirectUrl());
-    log("Load Desktop layout container");
-    DesktopLayoutContainer layoutContainer = from(DesktopLayoutContainer.class);
-
-    AppNavBar navBar= layoutContainer.getAppNav().getAppNavBar();
-    log("Navigate to overflow menu item");
-    navBar.getShowMoreMenuButton().expand();
+        AppNavBar navBar = layoutContainer.getAppNav().getAppNavBar();
+        log("Navigate to overflow menu item");
+        navBar.getShowMoreMenuButton().expand();
 //    menu item with name 'Forecasts' should present in overflow items
-    navBar.getShowMoreMenuButton().getMenuItemByText("Forecasts").clickAndWaitForUrl("forecasting");
-  }
+        navBar.getShowMoreMenuButton().getMenuItemByText("Forecasts").clickAndWaitForUrl("forecasting");
+    }
 
-  @AfterTest
-  public final void tearDown() {
-    quitDriver();
-  }
+    @AfterTest
+    public final void tearDown() {
+        quitDriver();
+    }
 }
