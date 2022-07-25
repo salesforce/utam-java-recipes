@@ -44,7 +44,7 @@ public class AppNavigationTests extends SalesforceWebTestBase {
   }
 
   @Test
-  public void testNavigateToNanBarOverflowItem() {
+  public void testNavigateToNavBarOverflowItem() {
     getDriver().get(testEnvironment.getRedirectUrl());
     log("Load Desktop layout container");
     DesktopLayoutContainer layoutContainer = from(DesktopLayoutContainer.class);

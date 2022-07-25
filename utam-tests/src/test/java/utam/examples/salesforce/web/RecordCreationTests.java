@@ -66,11 +66,11 @@ public class RecordCreationTests extends SalesforceWebTestBase {
   public void testAccountRecordCreation() {
     openRecordModal(RecordType.Account);
 
-    // todo - depending on org setup, modal might not present, then comment next lines
-    log("Load Change Record Type Modal");
-    RecordActionWrapper recordTypeModal = from(RecordActionWrapper.class);
-    log("Change Record Type Modal: click button 'New'");
-    recordTypeModal.waitForChangeRecordFooter().clickButton("Next");
+    // todo - depending on org setup, modal might present, then uncomment next lines
+//    log("Load Change Record Type Modal");
+//    RecordActionWrapper recordTypeModal = from(RecordActionWrapper.class);
+//    log("Change Record Type Modal: click button 'New'");
+//    recordTypeModal.waitForChangeRecordFooter().clickButton("Next");
 
     log("Load Record Form Modal");
     RecordActionWrapper recordFormModal = from(RecordActionWrapper.class);
@@ -101,9 +101,9 @@ public class RecordCreationTests extends SalesforceWebTestBase {
     BaseRecordForm recordForm = recordFormModal.getRecordForm();
     LwcRecordLayout recordLayout = recordForm.getRecordLayout();
 
-    log("Enter 'Close date' as 01/01/2020");
+    log("Enter 'Close date' as 01/01/2023");
     RecordLayoutItem closeDateItem = recordLayout.getItem(1, 1, 2);
-    closeDateItem.getDatepicker().setDateText("01/01/2020");
+    closeDateItem.getDatepicker().setDateText("01/01/2023");
 
     log("Pick first option in a 'Stage' combobox");
     RecordLayoutItem stageItem = recordLayout.getItem(1, 2, 2);
