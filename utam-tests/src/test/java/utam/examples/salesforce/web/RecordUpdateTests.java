@@ -17,6 +17,7 @@ import org.testng.annotations.Test;
 import utam.flexipage.pageobjects.Tab2;
 import utam.global.pageobjects.RecordActionWrapper;
 import utam.global.pageobjects.RecordHomeFlexipage2;
+import utam.lightning.pageobjects.Button;
 import utam.lightning.pageobjects.TabBar;
 import utam.lightning.pageobjects.Tabset;
 import utam.records.pageobjects.BaseRecordForm;
@@ -55,7 +56,7 @@ public class RecordUpdateTests extends SalesforceWebTestBase {
   public void testEditAccountRecord() {
 
     // todo - replace with existing Account Id for the environment
-    final String accountRecordId = "001S7000002X6FSIA0";
+    final String accountRecordId = "001S7000002XuheIAC";
     gotoRecordHomeByUrl(RecordType.Account, accountRecordId);
 
     log("Load Accounts Record Home page");
@@ -87,7 +88,7 @@ public class RecordUpdateTests extends SalesforceWebTestBase {
   @Test
   public void testInlineEditContactRecord() {
 
-    final String recordId = "003S7000001vfDXIAY";
+    final String recordId = "003S7000001uXylIAE";
     gotoRecordHomeByUrl(RecordType.Contact, recordId);
 
     RecordHomeFlexipage2 recordHome = from(RecordHomeFlexipage2.class);
@@ -111,18 +112,17 @@ public class RecordUpdateTests extends SalesforceWebTestBase {
     nameItem.getInlineEditButton().click();
 
     log("Click Save at the bottom of Details panel");
-    detailPanel
+    Button saveButton = detailPanel
         .getBaseRecordForm()
         .getFooter()
         .getActionsRibbon()
         .getActionRendererWithTitle("Save")
         .getHeadlessAction()
-        .getLightningButton()
-        .click();
-
+        .getLightningButton();
+    saveButton.click();
+    saveButton.waitForAbsence();
     log("Wait for field to be updated");
     nameItem.waitForOutputField();
-
     log("Check that field value has not changed");
     assertEquals(nameItem.getFormattedName().getInnerText(), nameString);
   }
@@ -131,7 +131,7 @@ public class RecordUpdateTests extends SalesforceWebTestBase {
   public void testEditLeadRecord() {
 
     // todo - replace with existing Lead Id for the environment
-    final String leadId = "00QS7000001OXVqMAO";
+    final String leadId = "00QS7000001NXg7MAG";
     gotoRecordHomeByUrl(RecordType.Lead, leadId);
 
     log("Load Lead Record Home page");
