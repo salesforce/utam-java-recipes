@@ -32,7 +32,7 @@ import utam.utils.salesforce.TestEnvironment;
  */
 public class RecordCreationTests extends SalesforceWebTestBase {
 
-  private final TestEnvironment testEnvironment = getTestEnvironment("sandbox");
+  private final TestEnvironment testEnvironment = getTestEnvironment("sandbox44");
 
   @BeforeTest
   public void setup() {
@@ -45,7 +45,7 @@ public class RecordCreationTests extends SalesforceWebTestBase {
    *
    * @param recordType record type affects navigation url
    */
-  private void openRecordModal(RecordType recordType) {
+  private RecordActionWrapper openRecordModal(RecordType recordType) {
 
     log("Navigate to an Object Home for " + recordType.name());
     getDriver().get(recordType.getObjectHomeUrl(testEnvironment.getRedirectUrl()));
@@ -60,20 +60,20 @@ public class RecordCreationTests extends SalesforceWebTestBase {
     log("Load Record Form Modal");
     RecordActionWrapper recordFormModal = from(RecordActionWrapper.class);
     Assert.assertTrue(recordFormModal.isPresent(), "record creation modal did not appear");
+    return recordFormModal;
   }
 
   @Test
   public void testAccountRecordCreation() {
-    openRecordModal(RecordType.Account);
+    RecordActionWrapper recordFormModal = openRecordModal(RecordType.Account);
 
-    // todo - depending on org setup, modal might not present, then comment next lines
-    log("Load Change Record Type Modal");
-    RecordActionWrapper recordTypeModal = from(RecordActionWrapper.class);
-    log("Change Record Type Modal: click button 'New'");
-    recordTypeModal.waitForChangeRecordFooter().clickButton("Next");
+    // todo - depending on org setup, modal might be present, then uncomment next lines
+    // log("Load Change Record Type Modal");
+    // recordTypeModal = from(RecordActionWrapper.class);
+    // log("Change Record Type Modal: click button 'New'");
+    // recordTypeModal.waitForChangeRecordFooter().clickButton("Next");
 
     log("Load Record Form Modal");
-    RecordActionWrapper recordFormModal = from(RecordActionWrapper.class);
     BaseRecordForm recordForm = recordFormModal.getRecordForm();
     LwcRecordLayout recordLayout = recordForm.getRecordLayout();
 
@@ -94,16 +94,13 @@ public class RecordCreationTests extends SalesforceWebTestBase {
 
   @Test
   public void testOpportunityRecordCreation() {
-    openRecordModal(RecordType.Opportunity);
-
-    log("Load Record Form Modal");
-    RecordActionWrapper recordFormModal = from(RecordActionWrapper.class);
+    RecordActionWrapper recordFormModal = openRecordModal(RecordType.Opportunity);
     BaseRecordForm recordForm = recordFormModal.getRecordForm();
     LwcRecordLayout recordLayout = recordForm.getRecordLayout();
 
-    log("Enter 'Close date' as 01/01/2020");
+    log("Enter 'Close date' as 01/01/2023");
     RecordLayoutItem closeDateItem = recordLayout.getItem(1, 1, 2);
-    closeDateItem.getDatepicker().setDateText("01/01/2020");
+    closeDateItem.getDatepicker().setDateText("01/01/2023");
 
     log("Pick first option in a 'Stage' combobox");
     RecordLayoutItem stageItem = recordLayout.getItem(1, 2, 2);

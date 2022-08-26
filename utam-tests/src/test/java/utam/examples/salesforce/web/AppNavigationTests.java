@@ -24,7 +24,7 @@ import utam.utils.salesforce.TestEnvironment;
  */
 public class AppNavigationTests extends SalesforceWebTestBase {
 
-  private final TestEnvironment testEnvironment = getTestEnvironment("sandbox");
+  private final TestEnvironment testEnvironment = getTestEnvironment("sandbox44");
 
   @BeforeTest
   public void setup() {

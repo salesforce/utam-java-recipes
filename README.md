@@ -59,7 +59,7 @@ utam-preview module has dependency from UTAM compiler, version should be same as
 
 The utam-preview module is an example of page objects authoring and compilation. This module also contains Salesforce page objects for default org setup that can be used to build Salesforce UI tests.
 
-__IMPORTANT: Page objects and tests for the Salesforce UI are compatible with application version 236 (Spring '22)__.
+__IMPORTANT: Page objects and tests for the Salesforce UI are compatible with application Summer'22__.
 
 > Note: These recipes are designed to work with a generic Salesforce org. If your org has customizations, you might need to modify page objects or tests locally to avoid errors.
 

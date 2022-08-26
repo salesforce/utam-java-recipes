@@ -19,8 +19,9 @@ import utam.tests.pageobjects.UtamChild;
 import utam.tests.pageobjects.UtamParent;
 
 /**
- * Example of combining UTAM page objects with other page objects implementations.
- * Uses deprecated methods because not officially supported.
+ * Example of combining UTAM page objects with other page objects implementations. Uses deprecated
+ * methods because not officially supported.
+ *
  * @author elizaveta.ivanova
  * @since Jan 2022
  */
@@ -28,7 +29,7 @@ public class CompatibilityTests extends UtamWebTestBase {
 
   @BeforeTest
   public void setup() {
-    setupFirefox();
+    setupChrome();
   }
 
   @Test
@@ -65,8 +66,8 @@ public class CompatibilityTests extends UtamWebTestBase {
     }
   }
 
-  private <T extends MyExternalCompatiblePageObject, S extends PageObject> S getUtamInsideCompatible(
-      T externalPageObject, Class<S> utamPageObject, String cssStr) {
+  private <T extends MyExternalCompatiblePageObject, S extends PageObject>
+      S getUtamInsideCompatible(T externalPageObject, Class<S> utamPageObject, String cssStr) {
     return loader.create(externalPageObject, utamPageObject, LocatorBy.byCss(cssStr));
   }
 
