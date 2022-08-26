@@ -1,19 +1,6 @@
 {
-  "modules": [
-    {
-      "name": "utam-salesforceapp-pageobjects",
-      "profiles": [
-        {
-          "name": "platform",
-          "values": [
-            "android_phone",
-            "ios_phone"
-          ]
-        }
-      ]
-    }
-  ],
-  "timeouts": {
-    "explicitTimeout": 60000
-  }
+  "injectionConfigs": [
+    "ui-utam-pageobjects.config.json",
+    "utam-salesforceapp-pageobjects.config.json"
+  ]
 }

@@ -14,9 +14,11 @@ import java.util.Calendar;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+import utam.core.framework.context.StringValueProfile;
 import utam.flexipage.pageobjects.Tab2;
 import utam.global.pageobjects.RecordActionWrapper;
 import utam.global.pageobjects.RecordHomeFlexipage2;
+import utam.lightning.pageobjects.Button;
 import utam.lightning.pageobjects.TabBar;
 import utam.lightning.pageobjects.Tabset;
 import utam.records.pageobjects.BaseRecordForm;
@@ -112,24 +114,28 @@ public class RecordUpdateTests extends SalesforceWebTestBase {
     nameItem.getInlineEditButton().click();
 
     log("Click Save at the bottom of Details panel");
-    detailPanel
+    Button saveButton = detailPanel
         .getBaseRecordForm()
         .getFooter()
         .getActionsRibbon()
         .getActionRendererWithTitle("Save")
         .getHeadlessAction()
-        .getLightningButton()
-        .click();
+        .getLightningButton();
+    saveButton.click();
+    saveButton.waitForAbsence();
 
     log("Wait for field to be updated");
     nameItem.waitForOutputField();
-
     log("Check that field value has not changed");
     assertEquals(nameItem.getFormattedName().getInnerText(), nameString);
   }
 
   @Test
   public void testEditLeadRecord() {
+    // set profile to lead entity type
+    // loader.getConfig().setProfile(new StringValueProfile("entity", "lead"));
+    // loader.resetContext();
+    setProfile(RecordType.Lead);
 
     // todo - replace with existing Lead Id for the environment
     final String leadId = testEnvironment.getLeadId();
@@ -139,8 +145,7 @@ public class RecordUpdateTests extends SalesforceWebTestBase {
     RecordHomeFlexipage2 recordHome = from(RecordHomeFlexipage2.class);
 
     log("Access Lead Highlights panel");
-    LwcHighlightsPanel highlightsPanel =
-        recordHome.getRecordHomeTemplateDesktopWithSubheader().getHighlights();
+    LwcHighlightsPanel highlightsPanel = recordHome.getHighlights();
 
     log("Wait for button 'Edit' and click on it");
     highlightsPanel.getActions().getActionRendererWithTitle("Edit").clickButton();
