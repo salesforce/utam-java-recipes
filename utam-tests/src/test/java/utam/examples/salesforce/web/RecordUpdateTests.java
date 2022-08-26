@@ -132,6 +132,9 @@ public class RecordUpdateTests extends SalesforceWebTestBase {
 
   @Test
   public void testEditLeadRecord() {
+    // set profile to lead entity type
+    // loader.getConfig().setProfile(new StringValueProfile("entity", "lead"));
+    // loader.resetContext();
     setProfile(RecordType.Lead);
 
     // todo - replace with existing Lead Id for the environment
