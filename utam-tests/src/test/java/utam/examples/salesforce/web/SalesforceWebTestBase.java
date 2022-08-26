@@ -9,7 +9,9 @@ package utam.examples.salesforce.web;
 
 import utam.base.UtamWebTestBase;
 import utam.core.driver.Document;
+import utam.core.framework.context.StringValueProfile;
 import utam.helpers.pageobjects.Login;
+import utam.utils.salesforce.RecordType;
 import utam.utils.salesforce.TestEnvironment;
 
 /**
@@ -40,5 +42,10 @@ abstract class SalesforceWebTestBase extends UtamWebTestBase {
     loginPage.login(userName, testEnvironment.getPassword());
     Document document = getDomDocument();
     document.waitFor(() -> document.getUrl().contains(landingPagePartialUrl));
+  }
+
+  final void setProfile(RecordType recordType) {
+    loader.getConfig().setProfile(new StringValueProfile("entity", recordType.name().toLowerCase()));
+    loader.resetContext();
   }
 }

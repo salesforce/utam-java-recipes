@@ -14,6 +14,7 @@ import java.util.Calendar;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+import utam.core.framework.context.StringValueProfile;
 import utam.flexipage.pageobjects.Tab2;
 import utam.global.pageobjects.RecordActionWrapper;
 import utam.global.pageobjects.RecordHomeFlexipage2;
@@ -123,13 +124,15 @@ public class RecordUpdateTests extends SalesforceWebTestBase {
 
     log("Wait for field to be updated");
     nameItem.waitForOutputField();
-
+    // todo - waiting fix in page object
+    debug(5);
     log("Check that field value has not changed");
     assertEquals(nameItem.getFormattedName().getInnerText(), nameString);
   }
 
   @Test
   public void testEditLeadRecord() {
+    setProfile(RecordType.Lead);
 
     // todo - replace with existing Lead Id for the environment
     final String leadId = testEnvironment.getLeadId();
@@ -139,8 +142,7 @@ public class RecordUpdateTests extends SalesforceWebTestBase {
     RecordHomeFlexipage2 recordHome = from(RecordHomeFlexipage2.class);
 
     log("Access Lead Highlights panel");
-    LwcHighlightsPanel highlightsPanel =
-        recordHome.getRecordHomeTemplateDesktopWithSubheader().getHighlights();
+    LwcHighlightsPanel highlightsPanel = recordHome.getHighlights();
 
     log("Wait for button 'Edit' and click on it");
     highlightsPanel.getActions().getActionRendererWithTitle("Edit").clickButton();
