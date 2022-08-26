@@ -37,7 +37,7 @@ import utam.utils.salesforce.TestEnvironment;
  */
 public class RecordUpdateTests extends SalesforceWebTestBase {
 
-  private final TestEnvironment testEnvironment = getTestEnvironment("sandbox");
+  private final TestEnvironment testEnvironment = getTestEnvironment("sandbox44");
 
   @BeforeTest
   public void setup() {
@@ -55,7 +55,7 @@ public class RecordUpdateTests extends SalesforceWebTestBase {
   public void testEditAccountRecord() {
 
     // todo - replace with existing Account Id for the environment
-    final String accountRecordId = "001S7000002X6FSIA0";
+    final String accountRecordId = testEnvironment.getAccountId();
     gotoRecordHomeByUrl(RecordType.Account, accountRecordId);
 
     log("Load Accounts Record Home page");
@@ -87,7 +87,8 @@ public class RecordUpdateTests extends SalesforceWebTestBase {
   @Test
   public void testInlineEditContactRecord() {
 
-    final String recordId = "003S7000001vfDXIAY";
+    // todo - replace with existing Contact Id for the environment
+    final String recordId = testEnvironment.getContactId();
     gotoRecordHomeByUrl(RecordType.Contact, recordId);
 
     RecordHomeFlexipage2 recordHome = from(RecordHomeFlexipage2.class);
@@ -131,7 +132,7 @@ public class RecordUpdateTests extends SalesforceWebTestBase {
   public void testEditLeadRecord() {
 
     // todo - replace with existing Lead Id for the environment
-    final String leadId = "00QS7000001OXVqMAO";
+    final String leadId = testEnvironment.getLeadId();
     gotoRecordHomeByUrl(RecordType.Lead, leadId);
 
     log("Load Lead Record Home page");

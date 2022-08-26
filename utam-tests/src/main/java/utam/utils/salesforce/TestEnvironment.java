@@ -36,6 +36,9 @@ public class TestEnvironment {
   private final String userName;
   private final String password;
   private final String sfdxLoginUrl;
+  private final String accountId;
+  private final String contactId;
+  private final String leadId;
 
   public TestEnvironment(String envNamePrefix) {
     this.envPrefix = envNamePrefix;
@@ -52,6 +55,12 @@ public class TestEnvironment {
     String loginUrlKey = getSfdxLoginUrlKey();
     this.sfdxLoginUrl =
         keys.contains(loginUrlKey) ? wrapUrl(resourceBundle.getString(loginUrlKey)) : "";
+    String acctIdKey = getAccountIdKey();
+    this.accountId = keys.contains(acctIdKey) ? resourceBundle.getString(acctIdKey) : "";
+    String contactIdKey = getContactIdKey();
+    this.contactId = keys.contains(contactIdKey) ? resourceBundle.getString(contactIdKey) : "";
+    String leadIdKey = getLeadIdKey();
+    this.leadId = keys.contains(leadIdKey) ? resourceBundle.getString(leadIdKey) : "";
   }
 
   private static String wrapUrl(String url) {
@@ -87,6 +96,18 @@ public class TestEnvironment {
     return envPrefix + ".password";
   }
 
+  private String getAccountIdKey() {
+    return envPrefix + ".account.id";
+  }
+
+  private String getContactIdKey() {
+    return envPrefix + ".contact.id";
+  }
+
+  private String getLeadIdKey() {
+    return envPrefix + ".lead.id";
+  }
+
   public String getBaseUrl() {
     if (baseUrl.isEmpty()) {
       throw new IllegalArgumentException(String.format(MISSING_PROPERTY_ERR, getBaseUrlKey()));
@@ -120,5 +141,26 @@ public class TestEnvironment {
       return baseUrl;
     }
     return redirectUrl;
+  }
+
+  public String getAccountId() {
+    if (accountId.isEmpty()) {
+      throw new IllegalArgumentException(String.format(MISSING_PROPERTY_ERR, getAccountIdKey()));
+    }
+    return accountId;
+  }
+
+  public String getContactId() {
+    if (contactId.isEmpty()) {
+      throw new IllegalArgumentException(String.format(MISSING_PROPERTY_ERR, getContactIdKey()));
+    }
+    return contactId;
+  }
+
+  public String getLeadId() {
+    if (leadId.isEmpty()) {
+      throw new IllegalArgumentException(String.format(MISSING_PROPERTY_ERR, getLeadId()));
+    }
+    return leadId;
   }
 }
