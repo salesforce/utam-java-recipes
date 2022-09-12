@@ -1,6 +1,5 @@
 {
   "injectionConfigs" : [ 
-	   "utam-salesforceapp-pageobjects.config.json",
-	   "mobileCM.config.json"
+	   "utam-salesforceapp-pageobjects.config.json"
     ]
 }
