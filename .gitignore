@@ -42,3 +42,4 @@ log.out
 **/test-output/
 **/.classpath
 **/.settings
+**/utam-lint.sarif
