@@ -7,7 +7,6 @@
  */
 package utam.examples.salesforce.web;
 
-import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -33,7 +32,6 @@ import utam.utils.salesforce.TestEnvironment;
  */
 public class RecordCreationTests extends SalesforceWebTestBase {
 
-  @FindBy
   private final TestEnvironment testEnvironment = getTestEnvironment("sandbox44");
 
   @BeforeTest
