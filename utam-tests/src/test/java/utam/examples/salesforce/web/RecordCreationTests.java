@@ -98,9 +98,9 @@ public class RecordCreationTests extends SalesforceWebTestBase {
     BaseRecordForm recordForm = recordFormModal.getRecordForm();
     LwcRecordLayout recordLayout = recordForm.getRecordLayout();
 
-    log("Enter 'Close date' as 01/01/2023");
+    log("Enter 'Close date' as 01/01/2024");
     RecordLayoutItem closeDateItem = recordLayout.getItem(1, 1, 2);
-    closeDateItem.getDatepicker().setDateText("01/01/2023");
+    closeDateItem.getDatepicker().setDateText("01/01/2024");
 
     log("Pick first option in a 'Stage' combobox");
     RecordLayoutItem stageItem = recordLayout.getItem(1, 2, 2);
