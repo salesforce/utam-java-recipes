@@ -99,23 +99,23 @@ public class RecordCreationTests extends SalesforceWebTestBase {
     LwcRecordLayout recordLayout = recordForm.getRecordLayout();
 
     log("Enter 'Close date' as 01/01/2024");
-    RecordLayoutItem closeDateItem = recordLayout.getItem(1, 1, 2);
+    RecordLayoutItem closeDateItem = recordLayout.getItem(1, 2, 2);
     closeDateItem.getDatepicker().setDateText("01/01/2024");
 
     log("Pick first option in a 'Stage' combobox");
-    RecordLayoutItem stageItem = recordLayout.getItem(1, 2, 2);
+    RecordLayoutItem stageItem = recordLayout.getItem(1, 4, 2);
     BaseCombobox stageCombobox = stageItem.getStageNamePicklist().getBaseCombobox();
     stageCombobox.expandForDisabledInput();
     stageCombobox.pickItem(2);
 
     log("Find and pick first account, link it to the opportunity");
-    RecordLayoutItem accountLookupItem = recordLayout.getItem(1, 3, 1);
+    RecordLayoutItem accountLookupItem = recordLayout.getItem(1, 4, 1);
     BaseCombobox accountLookup = accountLookupItem.getLookup().getBaseCombobox();
     accountLookup.expand();
     accountLookup.pickItem(1);
 
     log("Enter opportunity name");
-    RecordLayoutItem nameItem = recordLayout.getItem(1, 2, 1);
+    RecordLayoutItem nameItem = recordLayout.getItem(1, 3, 1);
     nameItem.getTextInput().setText("Opportunity name");
     log("Save new record");
     recordForm.clickFooterButton("Save");
