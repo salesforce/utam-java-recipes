@@ -15,7 +15,7 @@
 
   <properties>
     <utam.framework.version>2.0.1</utam.framework.version>
-    <salesforce.pageobjects.version>4.0.1</salesforce.pageobjects.version>
+    <salesforce.pageobjects.version>5.0.0</salesforce.pageobjects.version>
     <maven.compiler.source>11</maven.compiler.source>
     <maven.compiler.target>11</maven.compiler.target>
   </properties>
