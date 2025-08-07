@@ -6,7 +6,7 @@ UI Test Automation Model (UTAM) is based on the popular Page Object model design
 
 This repository is a Maven project with examples of UTAM compiler setup and UI tests written with UTAM.
 
-The project uses Java 11 and Maven 4.
+The project uses Java 17 and Maven 4.
 
 1. Clone the repository and install the Maven project.
 

@@ -43,3 +43,4 @@ log.out
 **/.classpath
 **/.settings
 **/utam-lint.sarif
+**/pageObjectManifest.json

@@ -53,7 +53,7 @@ public class AppNavigationTests extends SalesforceWebTestBase {
     log("Navigate to overflow menu item");
     navBar.getShowMoreMenuButton().expand();
     // menu item with name 'Forecasts' should present in overflow items
-    navBar.getShowMoreMenuButton().getMenuItemByText("Forecasts").clickAndWaitForUrl("forecasting");
+    navBar.getShowMoreMenuButton().getMenuItemByText("Reports").clickAndWaitForUrl("Report");
   }
 
   @AfterTest

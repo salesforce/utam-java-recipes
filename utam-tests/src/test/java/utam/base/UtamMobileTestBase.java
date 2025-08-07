@@ -7,7 +7,6 @@
  */
 package utam.base;
 
-import io.appium.java_client.remote.MobileCapabilityType;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 import org.openqa.selenium.WebDriver;
 import org.testng.Reporter;
@@ -49,7 +48,6 @@ public abstract class UtamMobileTestBase {
     appiumService = AppiumServerFactory.getAppiumServer();
     desiredCapabilities = new AppiumCapabilityProvider();
     // Force to use MJSONWP instead of default W3C
-    desiredCapabilities.setDesiredCapability(MobileCapabilityType.FORCE_MJSONWP, true);
   }
 
   private void setLoaderConfig() {
@@ -70,7 +68,6 @@ public abstract class UtamMobileTestBase {
     setupMobile();
     System.setProperty("ios.device", "iPhone 8 Plus");
     System.setProperty("ios.app", getUserHomeRelativePath("SApp.app"));
-    desiredCapabilities.setDesiredCapability(MobileCapabilityType.PLATFORM_VERSION, "15.2");
     driver = WebDriverFactory.getWebDriver(DriverType.ios, appiumService, desiredCapabilities);
     setLoaderConfig();
   }
