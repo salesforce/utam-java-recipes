@@ -12,9 +12,9 @@
   <artifactId>utam-tests</artifactId>
 
   <properties>
-    <selenium.version>3.141.59</selenium.version>
-    <testng.version>7.5.1</testng.version>
-    <appium.version>7.3.0</appium.version>
+    <selenium.version>4.21.0</selenium.version>
+    <testng.version>7.11.0</testng.version>
+    <appium.version>9.2.2</appium.version>
   </properties>
 
   <dependencies>
@@ -41,6 +41,12 @@
       <groupId>io.appium</groupId>
       <artifactId>java-client</artifactId>
       <version>${appium.version}</version>
+      <exclusions>
+        <exclusion>
+          <groupId>org.seleniumhq.selenium</groupId>
+          <artifactId>*</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
 
     <dependency>

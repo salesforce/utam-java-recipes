@@ -73,9 +73,12 @@ public class RecordUpdateTests extends SalesforceWebTestBase {
     RecordActionWrapper recordFormModal = from(RecordActionWrapper.class);
     BaseRecordForm recordForm = recordFormModal.getRecordForm();
     LwcRecordLayout recordLayout = recordForm.getRecordLayout();
+    recordLayout.waitFor(() -> recordLayout.getSection(1).isVisible());
 
     log("Access record form item by index");
-    RecordLayoutItem item = recordLayout.getItem(1, 2, 1);
+    RecordLayoutItem item = recordLayout.getSection(1)
+            .getRow(2)
+            .getItem(1);
 
     log("Enter updated account name");
     final String accountName = "Utam";
@@ -105,7 +108,10 @@ public class RecordUpdateTests extends SalesforceWebTestBase {
     log("Access Name field on Details panel");
     LwcDetailPanel detailPanel = tabset.getActiveTabContent(Tab2.class).getDetailPanel();
     LwcRecordLayout recordLayout = detailPanel.getBaseRecordForm().getRecordLayout();
-    RecordLayoutItem nameItem = recordLayout.getItem(1, 2, 1);
+    recordLayout.waitFor(() -> recordLayout.getSection(1).isVisible());
+    RecordLayoutItem nameItem = recordLayout.getSection(1)
+            .getRow(2)
+            .getItem(1);
 
     log("Remember value of the name field");
     String nameString = nameItem.getFormattedName().getInnerText();
@@ -154,9 +160,12 @@ public class RecordUpdateTests extends SalesforceWebTestBase {
     RecordActionWrapper recordFormModal = from(RecordActionWrapper.class);
     BaseRecordForm recordForm = recordFormModal.getRecordForm();
     LwcRecordLayout recordLayout = recordForm.getRecordLayout();
+    recordLayout.waitFor(() -> recordLayout.getSection(1).isVisible());
 
     log("Access record form item by index");
-    RecordLayoutItem item = recordLayout.getItem(1, 3, 1);
+    RecordLayoutItem item = recordLayout.getSection(1)
+            .getRow(3)
+            .getItem(1);
 
     log("Enter updated lead company name");
     final String formattedDate =

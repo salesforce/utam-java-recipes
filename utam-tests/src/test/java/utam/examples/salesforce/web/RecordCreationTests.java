@@ -11,14 +11,17 @@ import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import utam.force.pageobjects.ListViewManagerHeader;
-import utam.global.pageobjects.ConsoleObjectHome;
 import utam.global.pageobjects.RecordActionWrapper;
 import utam.global.pageobjects.RecordHomeFlexipage2;
 import utam.lightning.pageobjects.BaseCombobox;
+import utam.lists.pageobjects.CommonListInternal;
+import utam.lists.pageobjects.ListViewManager;
+import utam.lists.pageobjects.ListViewManagerHeader;
+import utam.lists.pageobjects.ObjectHome;
 import utam.records.pageobjects.BaseRecordForm;
 import utam.records.pageobjects.LwcRecordLayout;
 import utam.records.pageobjects.RecordLayoutItem;
+import utam.sfa.pageobjects.InputStageName;
 import utam.utils.salesforce.RecordType;
 import utam.utils.salesforce.TestEnvironment;
 
@@ -51,11 +54,16 @@ public class RecordCreationTests extends SalesforceWebTestBase {
     getDriver().get(recordType.getObjectHomeUrl(testEnvironment.getRedirectUrl()));
 
     log("Load Accounts Object Home page");
-    ConsoleObjectHome objectHome = from(ConsoleObjectHome.class);
-    ListViewManagerHeader listViewHeader = objectHome.getListView().getHeader();
+    ObjectHome objectHome = from(ObjectHome.class);
+    objectHome.waitFor(() -> objectHome.getListViewManager().isPresent());
+    ListViewManager listViewManager = objectHome.getListViewManager();
+    listViewManager.waitFor(() -> listViewManager.getCommonListInternal().isPresent());
+    CommonListInternal commonList = listViewManager.getCommonListInternal();
+    ListViewManagerHeader listViewHeader = commonList.getHeader();
 
     log("List view header: click button 'New'");
-    listViewHeader.waitForAction("New").click();
+    listViewHeader.waitFor(() -> listViewHeader.getAuraActionsContainer().isPresent());
+    listViewHeader.getAuraActionsContainer().getActionLink("New").click();
 
     log("Load Record Form Modal");
     RecordActionWrapper recordFormModal = from(RecordActionWrapper.class);
@@ -76,9 +84,12 @@ public class RecordCreationTests extends SalesforceWebTestBase {
     log("Load Record Form Modal");
     BaseRecordForm recordForm = recordFormModal.getRecordForm();
     LwcRecordLayout recordLayout = recordForm.getRecordLayout();
+    recordLayout.waitFor(() -> recordLayout.getSection(1).isVisible());
 
     log("Access record form item by index");
-    RecordLayoutItem item = recordLayout.getItem(1, 2, 1);
+    RecordLayoutItem item = recordLayout.getSection(1)
+            .getRow(2)
+            .getItem(1);
 
     log("Enter account name");
     final String accountName = "Utam";
@@ -97,25 +108,37 @@ public class RecordCreationTests extends SalesforceWebTestBase {
     RecordActionWrapper recordFormModal = openRecordModal(RecordType.Opportunity);
     BaseRecordForm recordForm = recordFormModal.getRecordForm();
     LwcRecordLayout recordLayout = recordForm.getRecordLayout();
+    recordLayout.waitFor(() -> recordLayout.getSection(1).isVisible());
 
     log("Enter 'Close date' as 01/01/2024");
-    RecordLayoutItem closeDateItem = recordLayout.getItem(1, 2, 2);
+    RecordLayoutItem closeDateItem = recordLayout.getSection(1)
+            .getRow(2)
+            .getItem(2);
     closeDateItem.getDatepicker().setDateText("01/01/2024");
 
     log("Pick first option in a 'Stage' combobox");
-    RecordLayoutItem stageItem = recordLayout.getItem(1, 4, 2);
-    BaseCombobox stageCombobox = stageItem.getStageNamePicklist().getBaseCombobox();
+    RecordLayoutItem stageItem = recordLayout.getSection(1)
+            .getRow(4)
+            .getItem( 2);
+    BaseCombobox stageCombobox = stageItem.getInputField(InputStageName.class)
+            .getRecordPicklist()
+            .getBasePicklist()
+            .getBaseCombobox();
     stageCombobox.expandForDisabledInput();
     stageCombobox.pickItem(2);
 
     log("Find and pick first account, link it to the opportunity");
-    RecordLayoutItem accountLookupItem = recordLayout.getItem(1, 4, 1);
+    RecordLayoutItem accountLookupItem = recordLayout.getSection(1)
+            .getRow(4)
+            .getItem(1);
     BaseCombobox accountLookup = accountLookupItem.getLookup().getBaseCombobox();
     accountLookup.expand();
     accountLookup.pickItem(1);
 
     log("Enter opportunity name");
-    RecordLayoutItem nameItem = recordLayout.getItem(1, 3, 1);
+    RecordLayoutItem nameItem = recordLayout.getSection(1)
+            .getRow(3)
+            .getItem(1);
     nameItem.getTextInput().setText("Opportunity name");
     log("Save new record");
     recordForm.clickFooterButton("Save");

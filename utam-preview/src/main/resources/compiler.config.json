@@ -1,6 +1,6 @@
 {
   "module": "preview",
-  "pageObjectsRootDir": "/src/main/resources/spec",
+  "pageObjectsRootDir": "/src/main/resources/utam",
   "pageObjectsFilesMask": "(.*)\\.utam\\.json$",
   "pageObjectsOutputDir": "/src/main/java",
   "resourcesOutputDir": "/src/main/resources",
@@ -24,7 +24,7 @@
     },
     {
       "typeMatch": "utam-sfdx",
-      "pathMatch": ".*/force-app"
+      "pathMatch": ".*/sfdx"
     },
     {
       "typeMatch": "utam-portal",
