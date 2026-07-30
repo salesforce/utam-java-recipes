@@ -14,7 +14,7 @@
   <properties>
     <selenium.version>4.21.0</selenium.version>
     <testng.version>7.11.0</testng.version>
-    <appium.version>9.2.2</appium.version>
+    <appium.version>10.1.1</appium.version>
   </properties>
 
   <dependencies>
